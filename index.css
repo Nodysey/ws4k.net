@@ -41,6 +41,7 @@ html, body {
 
 body {
     margin: 0;
+    overflow: hidden;
 }
 .main {
     flex: 1;
@@ -63,6 +64,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.header-bg {
+    background-image: url('/blade.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 h2 {
     margin-bottom: 4px;
@@ -184,12 +191,18 @@ a:hover {
 .footer {
     display: none;
     z-index: 999;
-    background-color: #101010;
+    background-color: #233270;
     color: var(--accent-white);
     text-align: center;
-    padding: 1em 0;
-    border-top: 1px solid #ffffff40;
+    border-top: 3px solid #141414;
     margin-top: auto;
+}
+
+.footer-wrapper {
+    border-top: 3px solid #afafaf;
+    width: auto;
+    height: auto;
+    padding: 1em 0;
 }
 
 .footer-content {
