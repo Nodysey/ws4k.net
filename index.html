@@ -1,10 +1,61 @@
+<!DOCTYPE html>
 <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv='content-language' content="en">
+    <meta name="description" content="Explore live streams from Weather Ranch and our partners, including weather updates, music, and entertainment. Watch now!">
+    <title>Weather Ranch Streaming</title>
+    <meta property="og:title" content="Weather Ranch Streaming" />
+    <meta property="og:description" content="Explore live streams from Weather Ranch and our partners, including weather updates, music, and entertainment. Watch now!" />
+    <meta property="og:image" content="https://streaming.weatherranch.com/logo.png" />
+    <meta property="og:url" content="https://streaming.weatherranch.com" />
+    <meta property="og:type" content="website" />
+    <link rel="favicon" href="favicon.ico">
     <link rel="manifest" href="/manifest.json"/>
     <head>
-        <meta http-equiv="refresh" content="0;url=https://battaglia.ddns.net/twc/">
+        <link rel="stylesheet" href="/index.css">
+        <link rel="stylesheet" href="/homepage.css">
+        <style>
+            .main {
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        Redirecting to https://battaglia.ddns.net/twc.<br>
-        If the redirect does not work, click <a href="https://battaglia.ddns.net/twc">this link</a>.
+        <div class="main">
+            <div class="info-flex">
+                <div class="landing-item partners">
+                    <div class="partners-details">
+                        <h1>Choose an emulator:</h1>
+                        <div class="partners-links" id="featured">
+                            <a class="channel-ql" href="https://taiganet.com">
+                                <div class="chql opt1">
+                                    <div class="chql-cover">
+                                        <h2 class="chql-label">Taiganet WS4000</h2>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="channel-ql" href="https://battaglia.ddns.net/twc">
+                                <div class="chql opt2">
+                                    <div class="chql-cover">
+                                        <h2 class="chql-label">Battaglia's Web Simulator</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; <span id="currentYear"></span> Weather Ranch. All rights reserved.</p>
+                <p><a href="https://weatherranch.com">weatherranch.com</a> - <a href="https://weatherscan.me">weatherscan.me</a> - <a href="https://ws4k.net">ws4k.net</a></p>
+            </div>
+        </footer>
+        <script>
+            document.getElementById("currentYear").innerText = new Date().getFullYear();
+        </script>
     </body>
+    
 </html>
