@@ -84,7 +84,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 78px);
+    height: calc(100vh - 74px);
     min-height: 500px;
     z-index: 1;
     display: flex;
@@ -92,7 +92,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
 }
 
 .opt1 {
