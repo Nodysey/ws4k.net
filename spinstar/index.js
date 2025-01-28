@@ -26,4 +26,4 @@ function spinything() {
         }, 100);
     },1000);
 };
-setTimeout(spinything,1000)
+document.addEventListener('load', setTimeout(spinything,100))
