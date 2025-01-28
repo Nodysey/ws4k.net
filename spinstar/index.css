@@ -1,0 +1,10 @@
+body {
+    background-color: white;
+}
+#logo {
+    display: block;
+    margin: 0px auto;
+    width: 625px;
+    height: 145px;
+    margin-top: calc(50vh - 72.5px);
+}
