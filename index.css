@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6, p, b, a {
 h1 {
     color: #ff0;
 }
-.footer p, .footer a, .footer span {
+.footer * {
     margin: 0;
     font-size: 14pt;
     font-family: "Star 4000 Small";
@@ -81,10 +81,6 @@ h4 {
     color: #ffffff80;
     font-weight: normal;
     margin-top: 4px;
-}
-.headerlogo {
-    height: 32px;
-    margin: 4px 12px;
 }
 a {
     text-decoration: underline;
@@ -198,7 +194,7 @@ a:hover {
     text-align: center;
     border-top: 3px solid #141414;
     position: relative;
-    top: -1px;
+    top: 0px;
     padding-bottom: 4px;
 }
 
