@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Active Alerts</title>
+        <style>
+            * {
+                font-family: -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+                font-size: 10pt;
+            }
+            hr {
+                border: none;
+                border-bottom: 1px solid transparent;
+            }
+            table {
+                border-spacing: 0;
+            }
+            table, th, td {
+                border: 1px solid gray;
+                border-collapse: collapse;
+                font-weight: normal;
+                font-size: 10pt;
+            }
+            th {
+                background-color: #f0f0f0;
+            }
+            th,td {
+                padding: 2px 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <label>FIPS Code</label>
+        <input type="text" maxlength="6" id="fips">
+        <button id="form-submit">Submit</button>
+        <hr>
+        <table id="results">
+        </table>
+        <script>
+            let params = new URLSearchParams(document.location.search);
+            var fipsUrl = params.get('fips');
+            document.getElementById('fips').value = fipsUrl
+            document.getElementById('form-submit').click()
+            document.getElementById('form-submit').onclick = function(){
+                var textBox = document.getElementById('fips')
+                var resultBox = document.getElementById('results')
+                fetch(`https://easip-client.ccp.xcal.tv/eas/api/alert/active/fipscode/${textBox.value}?format=json`)
+                .then((response) => response.json())
+                .then((data) => {
+                    resultBox.innerHTML = `
+            <tr>
+                <th>Event</th>
+                <th>Header</th>
+                <th>Description</th>
+                <th>Instructions</th>
+                <th>Urgency</th>
+                <th>Severity</th>
+                <th>Certainty</th>
+                <th>Effective</th>
+                <th>Expires</th>
+                <th>Video</th>
+            </tr>
+            `
+                    for (const item of data.alerts) {
+                        resultBox.innerHTML += `
+            <tr>
+                <td>${item.info[0].event}</td>
+                <td>${item.identifier + item.info[0].senderName}</td>
+                <td>${item.info[0].description}</td>
+                <td>${item.info[0].instruction}</td>
+                <td>${item.info[0].urgency}</td>
+                <td>${item.info[0].severity}</td>
+                <td>${item.info[0].certainty}</td>
+                <td>${item.info[0].effective}</td>
+                <td>${item.info[0].expires}</tzd>
+                <td><a href="${item.info[0].resource[0].uri}">Video Link</a></td>
+            </tr>
+            `;
+                    }
+                })
+                .catch(resultBox.innerHTML = '<tr><td>No Active Alerts!</td></tr>');
+            }
+        </script>
+    </body>
+</html>

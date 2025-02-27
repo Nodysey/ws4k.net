@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zip2Fips</title>
+        <style>
+            * {
+                font-family: -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+                font-size: 10pt;
+            }
+            hr {
+                border: none;
+                border-bottom: 1px solid transparent;
+            }
+            table {
+                border-spacing: 0;
+            }
+            table, th, td {
+                border: 1px solid gray;
+                border-collapse: collapse;
+                font-weight: normal;
+                font-size: 10pt;
+            }
+            th {
+                background-color: #f0f0f0;
+            }
+            th,td {
+                padding: 2px 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <label>ZIP Code</label>
+        <input type="text" maxlength="5" id="zip">
+        <button id="form-submit">Submit</button>
+        <hr>
+        <table id="results">
+        </table>
+        <script>
+            document.getElementById('form-submit').onclick = function(){
+                var textBox = document.getElementById('zip')
+                var resultBox = document.getElementById('results')
+                fetch(`https://easip-client.ccp.xcal.tv/eas/api/fips/zip/${textBox.value}?format=json`)
+                .then((response) => response.json())
+                .then((data) => {
+                    resultBox.innerHTML = `
+            <tr>
+                <th>City</th>
+                <th>ZIP Code</th>
+                <th>FIPS Code</th>
+                <th>State</th>
+            </tr>
+            `
+                    for (const item of data.zips) {
+                        resultBox.innerHTML += `
+            <tr>
+                <td>${item.id.slice(6,item.id.length)}</td>
+                <td>${item.zipCode}</td>
+                <td onclick="searchFIPS(item.countyFips)">${item.countyFips}</td>
+                <td>${item.state}</td>
+            </tr>
+            `;
+                    }
+                })
+                .catch(resultBox.innerHTML = '<tr><td>Not a valid ZIP Code</td></tr>');
+            }
+        </script>
+    </body>
+</html>
