@@ -15,6 +15,7 @@
             --bg-color-3: #cc99ff;
             --bg-color-4: #e6ccff;
             --bg-color-5: #7f5a9b;
+            box-sizing: border-box;
         }
         body {
             background-image: url(/img/bg_var.svg);
@@ -91,8 +92,32 @@
             height: 31px;
             margin-right: 8px;
         }
+        .socials {
+            flex-direction: row;
+        }
+        .socials a {
+            margin-right: 8px;
+            color: #ffffff;
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+        }
         p {
             display: initial;
+        }
+        .gallery {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 6px;
+        }
+        .gallery .column {
+            flex: 33.33%;
+            max-width: 33.33%;
+            padding: 6px;
+        }
+        .column img {
+            padding-top: 6px;
+            width: 100%;
         }
     </style>
 </head>
@@ -123,8 +148,27 @@
             <a href="/opencube">OpenCube</a>
             <a href="/opencrawl">OpenCrawl</a>
         </div>
-        <div class="section">
-            <img src="img/sexfinity.jpeg">
+        <div class="section gallery">
+            <div class="column">
+                <img src="img/sexfinity.jpeg">
+                <img src="img/IMG_0026.jpg">
+                <img src="img/nut.png">
+            </div>
+            <div class="column">
+                <img src="img/kitt.png">
+                <img src="img/IMG_3106.jpg">
+            </div>
+            <div class="column">
+                <img src="img/IMG_5166.jpg">
+                <img src="img/drakepill.png">
+                <img src="img/IMG_1055.jpeg">
+            </div>
+        </div>
+        <div class="section socials">
+            <a href="https://bsky.app/profile/ws4k.net">Bluesky</a>
+            <a href="https://youtube.com/@hainesnoids">Youtube</a>
+            <a href="https://discord.gg/9cT6rmxvT9">Discord</a>
+            <a href="https://github.com/nodysey">Github</a>
         </div>
         <div class="section btn-footer">
             <a href="https://dimden.dev/"><img src="https://dimden.dev/services/images/88x31.gif"></a>
