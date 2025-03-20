@@ -104,13 +104,19 @@
         p {
             display: initial;
         }
-        .gallery {
+        .has-gallery {
+            padding: 0 6px;
+        }
+        .has-gallery h2 {
+            margin: 6px;
+        }
+        gallery {
+            display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-between;
-            padding: 0 6px;
         }
-        .gallery .column {
+        gallery .column {
             flex: 33.33%;
             max-width: 33.33%;
             padding: 6px;
@@ -143,26 +149,45 @@
             <a href="/spinstar">Spinning Intellistar Logo</a>
             <a href="/easip">Comcast EASip Utilities</a>
         </div>
-        <div class="section">
+        <div class="section has-gallery">
             <h2>Projects</h2>
+            <gallery>
+                <div class="column">
+                    <img src="img/sexfinity.jpeg">
+                    <img src="img/IMG_0026.jpg">
+                    <img src="img/nut.png">
+                </div>
+                <div class="column">
+                    <img src="img/kitt.png">
+                    <img src="img/IMG_3106.jpg">
+                </div>
+                <div class="column">
+                    <img src="img/IMG_5166.jpg">
+                    <img src="img/drakepill.png">
+                    <img src="img/IMG_1055.jpeg">
+                </div>
+            </gallery>
             <a href="/opencube">OpenCube</a>
             <a href="/opencrawl">OpenCrawl</a>
+            <a href="https://streaming.weatherranch.com">Weather Ranch Streaming</a>
         </div>
-        <div class="section gallery">
-            <div class="column">
-                <img src="img/sexfinity.jpeg">
-                <img src="img/IMG_0026.jpg">
-                <img src="img/nut.png">
-            </div>
-            <div class="column">
-                <img src="img/kitt.png">
-                <img src="img/IMG_3106.jpg">
-            </div>
-            <div class="column">
-                <img src="img/IMG_5166.jpg">
-                <img src="img/drakepill.png">
-                <img src="img/IMG_1055.jpeg">
-            </div>
+        <div class="section has-gallery">
+            <gallery>
+                <div class="column">
+                    <img src="img/sexfinity.jpeg">
+                    <img src="img/IMG_0026.jpg">
+                    <img src="img/nut.png">
+                </div>
+                <div class="column">
+                    <img src="img/kitt.png">
+                    <img src="img/IMG_3106.jpg">
+                </div>
+                <div class="column">
+                    <img src="img/IMG_5166.jpg">
+                    <img src="img/drakepill.png">
+                    <img src="img/IMG_1055.jpeg">
+                </div>
+            </gallery>
         </div>
         <div class="section socials">
             <a href="https://bsky.app/profile/ws4k.net">Bluesky</a>

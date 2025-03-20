@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="240 567.27 192 120" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<clipPath id="ArtboardFrame">
+<rect height="120" width="192" x="240" y="567.27"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Layer" vectornator:layerName="Layer">
+<g opacity="1" vectornator:layerName="group 6">
+<path d="M240 567.27L432 567.27L432 687.27L240 687.27L240 567.27Z" fill="#efbe97" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="rect 5"/>
+<path d="M309 600.27C306.511 600.27 304.5 602.281 304.5 604.77L304.5 637.592L314.02 628.071C316.214 625.877 319.772 625.877 321.98 628.071L331.5 637.592L350.02 619.071C352.214 616.877 355.772 616.877 357.98 619.071L367.5 628.592L367.5 604.77C367.5 602.281 365.489 600.27 363 600.27L309 600.27ZM304.5 643.948L304.5 649.77C304.5 652.259 306.511 654.27 309 654.27L314.822 654.27L328.322 640.77L318.802 631.249C318.366 630.813 317.648 630.813 317.212 631.249L304.5 643.948ZM354.802 622.249C354.366 621.813 353.648 621.813 353.212 622.249L321.178 654.27L363 654.27C365.489 654.27 367.5 652.259 367.5 649.77L367.5 634.948L354.802 622.249ZM300 604.77C300 599.806 304.036 595.77 309 595.77L363 595.77C367.964 595.77 372 599.806 372 604.77L372 649.77C372 654.734 367.964 658.77 363 658.77L309 658.77C304.036 658.77 300 654.734 300 649.77L300 604.77ZM322.5 611.52C322.5 610.277 321.493 609.27 320.25 609.27C319.007 609.27 318 610.277 318 611.52C318 612.762 319.007 613.77 320.25 613.77C321.493 613.77 322.5 612.762 322.5 611.52ZM313.5 611.52C313.5 607.792 316.522 604.77 320.25 604.77C323.978 604.77 327 607.792 327 611.52C327 615.248 323.978 618.27 320.25 618.27C316.522 618.27 313.5 615.248 313.5 611.52Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path 5"/>
+</g>
+</g>
+</svg>
