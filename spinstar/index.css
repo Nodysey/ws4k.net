@@ -1,10 +1,80 @@
 body {
     background-color: white;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
 }
+
+#main {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 4;
+    perspective: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@font-face {
+    font-family: Frutiger;
+    src: url(Frutiger_bold.woff) format("woff");
+    font-weight: bold;
+    font-style: normal
+  }
+
 #logo {
     display: block;
-    margin: 0px auto;
     width: 625px;
     height: 145px;
-    margin-top: calc(50vh - 72.5px);
+}
+
+.blackbar {
+    height: 23.5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #161418;
+    z-index: 3;
+}
+
+.blackbar .introtext {
+    position: absolute;
+    width: 400px;
+    left: 8.05%;
+    top: 4.6%;
+    display: flex;
+    flex-direction: row;
+    flex-direction: column;
+}
+
+.blackbar .introtext .introtext {
+    white-space: nowrap;
+    position: relative;
+    font-family: Frutiger;
+    font-weight: 600;
+    color: #d8c422;
+    font-size: 31.5px;
+    letter-spacing: 1px;
+    padding-top: 6px;
+}
+
+#savebutton {
+    position: absolute;
+    top: 170px;
+    font-family: Frutiger;
+    font-weight: 600;
+    color: #d8c422;
+    font-size: 38px;
+    letter-spacing: 1px;
+    padding-top: 6px;
+}
+
+.blackbar .twclogo {
+    object-fit: contain;
+    position: absolute;
+    width: 500px;
+    height: 175px;
+    right: 1.9%;
+    top: -9px;
 }
