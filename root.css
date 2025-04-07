@@ -43,7 +43,7 @@ a {
 #main {
     width: 100%;
     max-width: 800px;
-    margin: 20px 6px 60px;
+    margin: 0px 6px 60px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
