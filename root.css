@@ -282,6 +282,21 @@ hr {
     margin-top: 2px;
 }
 
+.fb-stamp, .section .fb-stamp {
+    width: 99px;
+    height: 56px;
+    display: flex;
+    transform: rotate(-10deg);
+    position: absolute;
+    right: 73px;
+    top: 284px;
+    transition: all .3s ease;
+}
+
+.fb-stamp:hover, .section .fb-stamp:hover {
+    transform: rotate(-8deg) scale(1.4);
+}
+
 @media ( max-width: 790px ) {
     #wrap {
         flex-direction: column;
