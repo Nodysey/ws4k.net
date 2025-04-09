@@ -1,5 +1,5 @@
 function getFormattedTime(time) {
-    const date = new Date(time * 1000);
+    const date = new Date(Date.parse(time));
     const now = new Date();
     if (date.getDate() === now.getDate() && date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear()) {
         // posted today
