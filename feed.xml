@@ -1,6 +1,7 @@
 <rss version="2.0">
     <channel>
         <title>Hainesnoids's Blog of Awesomeness</title>
+        <!-- subtle reference iykwim -->
         <link>https://ws4k.net/blog</link>
         <description>
         The best blog with all the awesomeness included.
@@ -9,7 +10,6 @@
         <image>
         <link>https://ws4k.net/blog</link>
         <title>Hainesnoids's Blog of Awesomeness</title>
-        <!-- subtle reference iykwim -->
         <url>
         <!-- image goes here -->
         </url>
@@ -19,6 +19,7 @@
             <description>Nintendo delayed switch 2 pre-orders in the US due to the tariffs, and Framework has recently done the same thing for a similar reason (keep in mind, pre-orders for both were to open on the same day). If this means pre-orders for both open up on my birthday that's fine, but idk about everything else.</description>
             <pubDate>2025-04-09 06:33:00 EDT</pubDate>
             <guid>2</guid>
+            <link>https://ws4k.net/viewpost?id=2</link>
             <author>hainesnoids</author>
         </item>
         <item>
@@ -26,6 +27,7 @@
             <description>i cannot get my voice to sound good, so next week's video might get delayed. but hey the script and thumbnail are done so its not THAT bad.</description>
             <pubDate>2025-04-08 21:07:00 EDT</pubDate>
             <guid>1</guid>
+            <link>https://ws4k.net/viewpost?id=1</link>
             <author>hainesnoids</author>
         </item>
         <item>
@@ -33,6 +35,7 @@
             <description>i plan to use this a lot, so yeah, uuh, expect that.</description>
             <pubDate>2025-04-08 21:05:00 EDT</pubDate>
             <guid>0</guid>
+            <link>https://ws4k.net/viewpost?id=0</link>
             <author>hainesnoids</author>
         </item>
     </channel>
