@@ -4,87 +4,90 @@
 <head>
     <title>the hainesverse</title>
     <link rel="stylesheet" href="root.css">
-    <link rel="icon" href="../img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
 </head>
 
 <body>
     <div id="parallax-background"></div>
     <div id="wrap">
         <div id="aside-left" class="aside">
-            <div class="section">
-                <h2>status</h2>
-                <hr style="min-width: 100%; color: var(--accent); margin-top: 2px;">
-                <p>
-                    if a simple peice of cloth can block high pitched sounds so well, why has no one put one around a deflection yolk yet?
-                </p>
+            <div class="section weather">
+                <div class="flex-row space-between">
+                    <h2>weather</h2>
+                    <a href="https://weather.com"><img style="width: 28px; height: 28px;" src="img/icon/twc.svg" alt="The Weather Channel Logo"></a>
+                </div>
+                <hr>
+                <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
+                <span id="wx-cond">loading</span>
             </div>
             <div class="section">
                 <h2>projects</h2>
-                <hr style="min-width: 100%; color: var(--accent); margin-top: 2px;">
-                <a href="../opencube">OpenCube</a>
-                <a href="../opencrawl">OpenCrawl</a>
+                <hr>
+                <a href="/opencube">OpenCube</a>
+                <a href="/opencrawl">OpenCrawl</a>
                 <a href="https://streaming.weatherranch.com">Weather Ranch Streaming</a>
             </div>
             <div class="section">
                 <iframe class="video aspect-wide" allowfullscreen style="width: 100%; height: auto;" src="https://streaming.weatherranch.com/player?v=hbs"></iframe>
             </div>
-            <div class="section">
+            <div class="section navlink">
                 <iframe width="180" height="180" style="border:none;width:auto;height:auto;aspect-ratio:1/1;" src="https://dimden.neocities.org/navlink/" name="neolink"></iframe>
             </div>
         </div>
         <div id="main">
             <div class="top">
-                <img src="../img/banner.png">
+                <img src="img/banner.png">
             </div>
             <header class="section">
                 <a href="/">home</a>
                 <a href="/blog" class="active">blog</a>
             </header>
-            <div class="section">
-                <a>
-                    <h1>This is a title</h1>
-                    <span>This is an author</span>
-                </a>
+            <div id="blog-content">
+
             </div>
         </div>
         <div id="aside-right" class="aside">
             <div class="section socials" id="socials">
                 <a href="https://bsky.app/profile/ws4k.net" alt="Bluesky">
-                    <img src="../img/icon/bluesky.svg" alt="Bluesky Icon">
+                    <img src="img/icon/bluesky.svg" alt="Bluesky Icon">
                     Bluesky
                 </a>
                 <a href="https://youtube.com/@hainesnoids">
-                    <img src="../img/icon/youtube.svg" alt="YouTube Icon">
+                    <img src="img/icon/youtube.svg" alt="YouTube Icon">
                     Youtube
                 </a>
                 <a href="https://discord.gg/9cT6rmxvT9">
-                    <img src="../img/icon/discord.svg" alt="Discord Icon">
+                    <img src="img/icon/discord.svg" alt="Discord Icon">
                     Discord
                 </a>
                 <a href="https://github.com/nodysey">
-                    <img src="../img/icon/github.svg" alt="GitHub Icon">
+                    <img src="img/icon/github.svg" alt="GitHub Icon">
                     GitHub
                 </a>
                 <a href="https://en.pronouns.page/@hainesnoids">
-                    <img src="../img/icon/pronounspage.svg" alt="Pronouns.page Icon">
+                    <img src="img/icon/pronounspage.svg" alt="Pronouns.page Icon">
                     Pronouns.page
                 </a>
                 <a href="https://steamcommunity.com/id/hainesnoids">
-                    <img src="../img/icon/steam.svg" alt="Steam Icon">
+                    <img src="img/icon/steam.svg" alt="Steam Icon">
                     Steam
                 </a>
             </div>
             <div class="section btn-footer">
+                <img class="fb-stamp" src="img/nina-stamp.png" title="literally me">
                 <a href="https://ws4k.net/"><img src="/page-hotlink.png"></a>
                 <a href="https://dimden.dev/"><img src="https://dimden.dev/services/images/88x31.gif"></a>
-                <img src="../img/bob.gif">
-                <a href="https://fox29.com/"><img src="../img/fox29.gif"></a>
-                <a href="https://fox29.com/shows/good-day"><img src="../img/fox29gdp.gif"></a>
+                <img src="img/bob.gif">
+                <a href="https://fox29.com/"><img src="img/fox29.gif"></a>
+                <a href="https://fox29.com/shows/good-day"><img src="img/fox29gdp.gif"></a>
                 <a href="https://fan.nekoweb.org"><img src="https://fan.nekoweb.org/images/button.gif"></a>
                 <a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="https://jigsaw.w3.org/css-validator/images/vcss"></a>
                 <a href="https://nekoweb.org/"><img src="https://nekoweb.org/assets/buttons/button11.gif"></a>
-                <img src="../img/trackball-hotlink.png" title="feel free to laugh at me">
+                <img src="img/trackball-hotlink.png" title="feel free to laugh at me">
                 <a href="https://thinliquid.dev"><img src="https://thinliquid.dev/thnlqd.png" alt="thinliquid's button"></a>
+                <img src="img/debian.gif">
+                <a title="you HAVE to check out fanblog it's so fucking good" href="http://fanblogcomic.neocities.org"><img src="img/fanblog.png"></a>
             </div>
             <div class="section">
                 <h2 style="padding-bottom: 8px;">Add my button!</h2>
@@ -94,13 +97,15 @@
                 </div>
             </div>
             <div class="section">
-                <span>banner and background art by my cool friend <a href="https://www.tumblr.com/ace-was-already-taken">ace</a></span>
+                <span>background art by my cool friend <a href="https://www.tumblr.com/ace-was-already-taken">ace</a></span>
             </div>
         </div>
     </div>
-    <script src="../oneko/oneko.js"></script>
-    <script src="../index.js"></script>
-    <script src="reader.js"></script>
+    <script src="oneko/oneko.js"></script>
+    <script src="index.js"></script>
+    <script src="bin/x2js.min.js"></script>
+    <script src="feed.js"></script>
+    <script src="weather.js"></script>
 </body>
 
 </html>

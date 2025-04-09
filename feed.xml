@@ -1,0 +1,32 @@
+<rss version="2.0">
+    <channel>
+        <title>Hainesnoids's Blog of Awesomeness</title>
+        <link>https://ws4k.net/blog</link>
+        <description>
+        The best blog with all the awesomeness included.
+        </description>
+        <language>en-US</language>
+        <image>
+        <link>https://ws4k.net/blog</link>
+        <title>Hainesnoids's Blog of Awesomeness</title>
+        <!-- subtle reference iykwim -->
+        <url>
+        <!-- image goes here -->
+        </url>
+        </image>
+        <item>
+            <title>upcoming video might be delayed</title>
+            <description>i cannot get my voice to sound good, so next week's video might get delayed. but hey the script and thumbnail are done so its not THAT bad.</description>
+            <pubDate>2025-04-08 21:07:00 EDT</pubDate>
+            <guid></guid>
+            <author>hainesnoids</author>
+        </item>
+        <item>
+            <title>welcome to the blog!</title>
+            <description>i plan to use this a lot, so yeah, uuh, expect that.</description>
+            <pubDate>2025-04-08 21:05:00 EDT</pubDate>
+            <guid></guid>
+            <author>hainesnoids</author>
+        </item>
+    </channel>
+</rss>

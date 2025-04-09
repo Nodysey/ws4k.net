@@ -129,6 +129,7 @@ btwn {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 6px;
+    position: relative;
 }
 .btn-footer a {
     height: auto;
@@ -189,6 +190,9 @@ gallery .column {
 .flex-column {
     display: flex;
     flex-direction: column;
+}
+.align-baseline {
+    align-items: baseline;
 }
 .grow-row * {
     flex-grow: 1;
@@ -279,7 +283,11 @@ gallery .column {
 hr {
     min-width: 100%;
     color: var(--accent);
-    margin-top: 2px;
+    margin: 2px 0;
+}
+
+hr.sub {
+    color: var(--secondary);
 }
 
 .fb-stamp, .section .fb-stamp {
@@ -288,8 +296,8 @@ hr {
     display: flex;
     transform: rotate(-10deg);
     position: absolute;
-    right: 73px;
-    top: 284px;
+    right: -37px;
+    top: -25px;
     transition: all .3s ease;
 }
 
