@@ -33,6 +33,7 @@ body {
 #wrap {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 iframe {
     border: 0;

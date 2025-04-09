@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <style>
+            body {
+                margin: 0;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                margin: 0;
+                padding: 0;
+                background: radial-gradient(circle at top, #e3f2fd, #90caf9);
+                background-attachment: fixed;
+                width: 100vw;
+                height: 100vh;
+                text-align: center;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            #shapes {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+            }
+            .shape {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 50%;
+                cursor: grab;
+                user-select: none;
+                z-index: 1;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            .event-title {
+                margin-top: 20vh;
+            }
+            h1, h2 {
+                animation: fadeIn 2s ease-in-out;
+                text-shadow: 0 0 10px #e3f2fd, 0 0 20px #e3f2fd, 0 0 30px #e3f2fd;
+            }
+            h1 {
+                font-size: 4em;
+                color: #0d47a1;
+                display: flex;
+                justify-content: center;
+                margin: 0;
+            }
+            h2 {
+                font-size: 2em;
+                color: #1565c0;
+                display: flex;
+                justify-content: center;
+                margin: 0;
+            }
+            .clock-wrap, .segment-wrap {
+                display: flex;
+                flex-direction: row;
+                position: relative;
+                z-index: 2;
+                pointer-events: none;
+            }
+            .clock, .segment {
+                max-width: 128px;
+                min-width: 128px;
+            }
+            .colon {
+                max-width: 32px;
+                min-width: 32px;
+            }
+            h2.colon {
+                visibility: hidden;
+            }
+            p {
+                font-size: 1.5em;
+                margin: 20px;
+                color: #1565c0;
+                animation: fadeIn 2s ease-in-out;
+            }
+            .shape:active {
+                cursor: grabbing;
+            }
+
+            .social-buttons {
+                margin-top: 40px;
+            }
+
+            .social-buttons a {
+                margin: 10px;
+                text-decoration: none;
+                font-size: 1.2em;
+                color: #0d47a1;
+                transition: color 0.3s ease-in-out;
+                animation: fadeIn 2s ease-in-out;
+            }
+            #addbtn {
+                position: fixed;
+                right: 0;
+                top: 0;
+                z-index: 332;
+            }
+            #add-shape {
+                display: none;
+                position: fixed;
+                width: 800px;
+                height: auto;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                background-color: white;
+                border: 1px solid black;
+                z-index: 333;
+            }
+            #add-shape .content {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            #add-shape .input {
+                width: 50%;
+                height: auto;
+                aspect-ratio: 1;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+            }
+            #add-shape .output {
+                width: 50%;
+                height: auto;
+                aspect-ratio: 1;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+            }
+            #add-shape-snapshot {
+                width: 240px;
+                height: 240px;
+                display: none;
+            }
+            #add-shape-preview {
+                width: auto;
+                height: 100%;
+            }
+            #add-shape-photo {
+                width: auto;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="addbtn">Add Ball</button>
+        <div id="add-shape">
+            <div class="content">
+                <div class="input">
+                    <video id="add-shape-preview"></video>
+                </div>
+                <canvas id="add-shape-snapshot"></canvas>
+                <div class="output">
+                <img id="add-shape-photo" alt="Initializing Camera..."/>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="add-shape-take-picture">Take Picture</button>
+                <button id="add-shape-apply">Add Shape</button>
+            </div>
+        </div>
+        <div id="shapes">
+
+        </div>
+        <script src="index.js"></script>
+        <script src="camera.js"></script>
+    </body>
+</html>
