@@ -30,3 +30,7 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+greentext {
+    color: var(--secondary);
+}
