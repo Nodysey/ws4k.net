@@ -1,6 +1,6 @@
 var cornerHits = 0;
 var images = [
-    "img/VBA4.png",
+    /*"img/VBA4.png",
     "img/arn.png",
     "img/austinlolz.png",
     "img/awn.png",
@@ -18,7 +18,7 @@ var images = [
     "img/projecta.png",
     "img/rt.png",
     "img/spark.png",
-    "img/weatherranch.png"
+    "img/weatherranch.png"*/
 ];
 
 function buildShapes() {
