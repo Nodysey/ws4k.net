@@ -12,21 +12,25 @@ fetch("/feed.xml")
         var rsse = x2js.xml2json(xml).rss;
         var rss = rsse.channel;
         var buffer = "";
-        const items = rss.item;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let guid = urlParams.get('id').toLowerCase();
+        const items = rss.item.filter(item => item.guid.toLowerCase() === guid);
+
         console.log(rss);
         for (let idx = 0; idx < items.length; idx++) {
             const itm = items[idx];
             buffer += `
             <div class="section">
-                <a class="title-link" href="./viewpost?id=${itm.guid}">
-                    <h2>${itm.title}</h2>
-                </a>
+                <h2>${itm.title}</h2>
+                <hr>
                 <div class="post-title flex-row align-baseline">
                     <span>${itm.author}</span>
                     <span class="dot"> • </span>
                     <span>${itm.pubDate}</span>
                 </div>
-                <hr>
+            </div>
+            <div class="section single-post">
                 <p>
                     ${itm.description}
                 </p>
