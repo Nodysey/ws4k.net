@@ -221,8 +221,8 @@ gallery .column {
     z-index: -9999;
 
     background-repeat: repeat;
-    background-size: cover;
-    background-position: center;
+    /*background-size: auto;*/
+    background-position: left top;
     background-image: url("img/background.png");
 }
 .spin-2min {
