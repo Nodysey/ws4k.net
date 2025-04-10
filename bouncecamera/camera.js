@@ -71,6 +71,8 @@ function takePicture() {
             clearInterval(countdownInterval);
             const context = canvas.getContext("2d");
             if (width && height) {
+                const audio = new Audio("sfx/shutter.mp3");
+                audio.play();
                 canvas.width = width;
                 canvas.height = height;
                 context.drawImage(video, 0, 0, width, height);
@@ -86,6 +88,9 @@ function takePicture() {
             } else {
                 clearPhoto();
             };
+        } else {
+            const audio = new Audio("sfx/countdown.mp3");
+            audio.play();
         }
     }, 1000);
 };
