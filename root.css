@@ -69,7 +69,8 @@ a {
 
     display: flex;
     flex-direction: column;
-    
+    position: relative;
+
     background: linear-gradient(to bottom, var(--background-light), var(--background)) no-repeat, var(--background);
     background-size: 100% 48px, auto;
     border: 2px solid var(--background);
@@ -300,10 +301,59 @@ hr.sub {
     right: -37px;
     top: -25px;
     transition: all .3s ease;
+    z-index: 111;
 }
 
 .fb-stamp:hover, .section .fb-stamp:hover {
     transform: rotate(-8deg) scale(1.4);
+}
+
+.ot-stamp, .section .ot-stamp {
+    width: 99px;
+    height: 56px;
+    display: flex;
+    transform: rotate(6deg);
+    position: absolute;
+    right: -37px;
+    bottom: -17px;
+    transition: all .3s ease;
+    z-index: 111;
+}
+
+.ot-stamp:hover, .section .ot-stamp:hover {
+    transform: rotate(9deg) scale(1.4);
+}
+
+.tb-stamp, .section .tb-stamp {
+    width: 99px;
+    height: 56px;
+    display: flex;
+    transform: rotate(-8deg);
+    position: absolute;
+    left: -37px;
+    top: -22px;
+    transition: all .3s ease;
+    z-index: 111;
+}
+
+.tb-stamp:hover, .section .tb-stamp:hover {
+    transform: rotate(-13deg) scale(1.4);
+}
+
+.wi-stamp, .section .wi-stamp {
+    width: 99px;
+    height: 56px;
+    display: flex;
+    transform: rotate(-8deg);
+    position: absolute;
+    right: -27px;
+    bottom: -12px;
+    transition: all .3s ease;
+    z-index: 111;
+}
+
+.wi-stamp:hover, .section .wi-stamp:hover {
+    transform: rotate(-4deg) scale(1.4);
 }
 
 @media ( max-width: 790px ) {
