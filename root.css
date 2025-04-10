@@ -356,6 +356,24 @@ hr.sub {
     transform: rotate(-4deg) scale(1.4);
 }
 
+.lang-itm {
+    width: 100%;
+    height: 72px;
+    position: relative;
+    margin: 4px 0;
+}
+.lang-itm img {
+    width: auto;
+    height: 100%;
+    aspect-ratio: 1;
+}
+.lang-itm div.flex-column {
+    flex-grow: 1;
+    padding: 0 8px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
 @media ( max-width: 790px ) {
     #wrap {
         flex-direction: column;
