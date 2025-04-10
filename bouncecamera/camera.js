@@ -10,14 +10,8 @@ let canvas = document.getElementById("add-shape-snapshot");
 let photo = document.getElementById("add-shape-photo");
 let startButton = document.getElementById("add-shape-take-picture");
 var stream;
-
-try {
-    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-    video.srcObject = stream;
-    video.play();
-} catch (err) {
-    console.error(`An error occurred: ${err}`);
-}
+var feedActive = false;
+var pictureEvent;
 
 async function start() {
     document.getElementById("add-shape").style.display = "block";
@@ -28,22 +22,31 @@ async function start() {
     document.querySelector("#add-shape-take-picture").style.display = "flex";
     document.querySelector("#add-shape-apply").style.display = "none";
     document.querySelector("#add-shape-retake").style.display = "none";
-    video.play();
-    video.addEventListener("canplay",(ev) => {
-        if (!streaming) {
-            height = (video.videoHeight / video.videoWidth) * width;
-    
-            video.setAttribute("width", width);
-            video.setAttribute("height", height);
-            canvas.setAttribute("width", width);
-            canvas.setAttribute("height", height);
-            streaming = true;
+    if (!feedActive) {
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+            video.srcObject = stream;
+            video.play();
+            feedActive = true;
+            video.addEventListener("canplay",(ev) => {
+                if (!streaming) {
+                    height = (video.videoHeight / video.videoWidth) * width;
+            
+                    video.setAttribute("width", width);
+                    video.setAttribute("height", height);
+                    canvas.setAttribute("width", width);
+                    canvas.setAttribute("height", height);
+                    startButton.addEventListener("click",(ev) => {
+                        takePicture();
+                        ev.preventDefault();
+                    }, false);
+                    streaming = true;
+                }
+            },false);
+        } catch (err) {
+            console.error(`An error occurred: ${err}`);
         }
-    },false);
-    startButton.addEventListener("click",(ev) => {
-        takePicture();
-        ev.preventDefault();
-    }, false);
+    }
     clearPhoto();
 };
 
