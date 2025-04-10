@@ -14,6 +14,12 @@ var stream;
 async function start() {
     document.getElementById("add-shape").style.display = "block";
     startButton.removeEventListener("click",start);
+    document.querySelector("#add-shape .input").style.display = "flex";
+    document.querySelector("#add-shape .output").style.display = "none";
+
+    document.querySelector("#add-shape-take-picture").style.display = "flex";
+    document.querySelector("#add-shape-apply").style.display = "none";
+    document.querySelector("#add-shape-retake").style.display = "none";
     try {
         stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false })
         video.srcObject = stream;
@@ -48,28 +54,51 @@ function clearPhoto() {
     photo.setAttribute("src", data);
 };  
 
-function takePicture() {
-    const context = canvas.getContext("2d");
-    if (width && height) {
-        canvas.width = width;
-        canvas.height = height;
-        context.drawImage(video, 0, 0, width, height);
 
-        const data = canvas.toDataURL("image/png");
-        photo.setAttribute("src", data);
-    } else {
-        clearPhoto();
-    }
+
+function takePicture() {
+    const countDown = document.querySelector("#add-shape .input .countdown span");
+    const countDownWrap = document.querySelector("#add-shape .input .countdown");
+    countDownWrap.style.display = "flex";
+    let countdownValue = 5;
+    countDown.textContent = countdownValue;
+
+    const countdownInterval = setInterval(() => {
+        countdownValue--;
+        countDown.textContent = countdownValue;
+
+        if (countdownValue <= 0) {
+            clearInterval(countdownInterval);
+            const context = canvas.getContext("2d");
+            if (width && height) {
+                canvas.width = width;
+                canvas.height = height;
+                context.drawImage(video, 0, 0, width, height);
+                const data = canvas.toDataURL("image/png");
+                photo.setAttribute("src", data);
+                document.querySelector("#add-shape .input").style.display = "none";
+                document.querySelector("#add-shape .output").style.display = "flex";
+                countDownWrap.style.display = "none";
+
+                document.querySelector("#add-shape-take-picture").style.display = "none";
+                document.querySelector("#add-shape-apply").style.display = "flex";
+                document.querySelector("#add-shape-retake").style.display = "flex";
+            } else {
+                clearPhoto();
+            };
+        }
+    }, 1000);
 };
 
 async function addShape() {
     var src = photo.getAttribute('src');
     addNewShape(src);
     document.getElementById("add-shape").style.display = "none";
-    stream.getTracks().forEach(track => {
+    /*stream.getTracks().forEach(track => {
         track.active = false;
         track.stop();
-    });
+    });*/
 }
 startButton.addEventListener("click",start);
 document.getElementById("add-shape-apply").addEventListener("click",addShape);
+document.getElementById("add-shape-retake").addEventListener("click",start);
