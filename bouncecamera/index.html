@@ -15,22 +15,24 @@
     <body>
         <button id="addbtn"><span class="material-symbols-outlined">add</span></button>
         <div id="add-shape">
-            <div class="content">
-                <div class="input">
-                    <div class="countdown">
-                        <span>5</span>
+            <div id="add-shape-content">
+                <div class="content">
+                    <div class="input">
+                        <div class="countdown">
+                            <span>5</span>
+                        </div>
+                        <video id="add-shape-preview"></video>
                     </div>
-                    <video id="add-shape-preview"></video>
+                    <canvas id="add-shape-snapshot"></canvas>
+                    <div class="output">
+                    <img id="add-shape-photo" alt="Initializing Camera..."/>
+                    </div>
                 </div>
-                <canvas id="add-shape-snapshot"></canvas>
-                <div class="output">
-                <img id="add-shape-photo" alt="Initializing Camera..."/>
+                <div class="buttons">
+                    <button id="add-shape-take-picture"><span class="material-symbols-outlined">photo_camera</span></button>
+                    <button id="add-shape-retake"><span class="material-symbols-outlined">close</span></button>
+                    <button id="add-shape-apply"><span class="material-symbols-outlined">check</span></button>
                 </div>
-            </div>
-            <div class="buttons">
-                <button id="add-shape-take-picture"><span class="material-symbols-outlined">photo_camera</span></button>
-                <button id="add-shape-retake"><span class="material-symbols-outlined">close</span></button>
-                <button id="add-shape-apply"><span class="material-symbols-outlined">check</span></button>
             </div>
         </div>
         <div id="shapes">
