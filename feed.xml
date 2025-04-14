@@ -15,6 +15,14 @@
         </url>
         </image>
         <item>
+            <title>I'm back!</title>
+            <description>i'm back to writing stuff on the blog, and my birthday is tomorrow! i recently got a new setup, and spring break is next week, so all is good. stay silly :3</description>
+            <pubDate>Mon, 14 Apr 2025 09:24:20 -0400</pubDate>
+            <guid>7</guid>
+            <link>https://ws4k.net/viewpost?id=6</link>
+            <author>hainesnoids</author>
+        </item>
+        <item>
             <title>Network-based firewalls and why they suck ass</title>
             <description>My school has network-wide site blocks, yet they barely use them (since they have goguardian for the students). Examples include all of neocities, certain youtube downloaders, and other presets defined by Cisco and Comcast Business.
             &lt;br&gt;&lt;br&gt;
