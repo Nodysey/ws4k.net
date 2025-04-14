@@ -1,6 +1,6 @@
 document.getElementById("addbtn").addEventListener("click", start)
 
-var width = 640;    // We will scale the photo width to this
+var width = 1920;    // We will scale the photo width to this
 var height = 0;     // This will be computed based on the input stream
 
 var streaming = false;
@@ -13,7 +13,10 @@ var stream;
 var feedActive = false;
 var pictureEvent;
 
+var currentImageId = -1;
+
 async function start() {
+    openFullscreen();
     document.getElementById("add-shape").style.display = "block";
     startButton.removeEventListener("click",start);
     document.querySelector("#add-shape .input").style.display = "flex";
@@ -59,12 +62,9 @@ function clearPhoto() {
     photo.setAttribute("src", data);
 };  
 
-
-
 function takePicture() {
     const countDown = document.querySelector("#add-shape .input .countdown span");
     const countDownWrap = document.querySelector("#add-shape .input .countdown");
-    document.querySelector("#add-shape-content").style.height = "400px";
     countDownWrap.style.display = "flex";
     let countdownValue = 5;
     countDown.textContent = countdownValue;
@@ -84,6 +84,7 @@ function takePicture() {
                 context.drawImage(video, 0, 0, width, height);
                 const data = canvas.toDataURL("image/png");
                 photo.setAttribute("src", data);
+                document.querySelector("#add-shape-content").style.width = "400px";
                 document.querySelector("#add-shape-content").style.height = "488px";
                 document.querySelector("#add-shape .input").style.display = "none";
                 document.querySelector("#add-shape .output").style.display = "flex";
@@ -113,6 +114,68 @@ async function addShape() {
         track.stop();
     });*/
 }
+
+async function showDownloadPrompt(imgId) {
+    document.getElementById("download-shape-download").style.display = "flex";
+    var imgElement = document.querySelector(`.shape[data-id="${imgId}"]`);
+    const dlPrompt = document.querySelector("#download-shape");
+    document.querySelector("#download-shape-preview").style.backgroundImage = imgElement.style.backgroundImage;
+    dlPrompt.style.display = "block";
+    document.querySelector("#download-shape .input").style.display = "flex";
+    document.querySelector("#download-shape .output").style.display = "none";
+    currentImageId = imgId;
+}
+
+async function download() {
+    const imgId = currentImageId;
+    var imageFile;
+    const formData = new FormData();
+    const imgPreview = document.querySelector("#download-shape-preview");
+
+    const backgroundImage = imgPreview.style.backgroundImage;
+    const dataUrl = backgroundImage.slice(5, -2); // Remove 'url("' and '")' from the string
+    const response = await fetch(dataUrl);
+    const blob = await response.blob();
+
+    // upload to LitterBox
+    imageFile = new File([blob], "image.png", { type: "image/png" });
+    formData.append("time", "1h");
+    formData.append("reqtype", "fileupload");
+    formData.append("fileToUpload", imageFile, `uploaded-${Math.floor(Math.random() * 1000000)}.png`);
+    try {
+        const response = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+            method: 'POST',
+            headers: {
+                "Host": "litterbox.catbox.moe",
+                "Origin": "https://litterbox.catbox.moe",
+                "Referer": "https://litterbox.catbox.moe/",
+                "Cookie": "PHPSESSID=o94d14afat9jvs2hdl4o6am860"
+            },
+            body: formData
+        });
+        if (response.ok) {
+            document.getElementById("download-shape-download").style.display = "none";
+            document.querySelector("#download-shape .input").style.display = "none";
+            document.querySelector("#download-shape .output").style.display = "flex";
+            const result = await response.text();
+            document.getElementById("downloaded-shape-link").innerText = result.slice(8);
+            console.log('File uploaded successfully:', result);
+        } else {
+            console.error('File upload failed:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error uploading file:', error);
+    }
+}
+
+async function closeDownloadWindow() {
+    document.getElementById("download-shape").style.display = "none";
+}
+
+
 startButton.addEventListener("click",start);
 document.getElementById("add-shape-apply").addEventListener("click",addShape);
 document.getElementById("add-shape-retake").addEventListener("click",start);
+
+document.getElementById("download-shape-close").addEventListener("click",closeDownloadWindow);
+document.getElementById("download-shape-download").addEventListener("click",download);

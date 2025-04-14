@@ -1,4 +1,5 @@
 var cornerHits = 0;
+var insertIdx = -1;
 var images = [
     /*"img/VBA4.png",
     "img/arn.png",
@@ -44,6 +45,13 @@ function addNewShape(img) {
     const parentRect = document.getElementById("shapes").getBoundingClientRect();
     const tempRect = icon.getBoundingClientRect();
     document.getElementById("shapes").appendChild(icon);
+    insertIdx++;
+    icon.setAttribute("data-id", insertIdx);
+    icon.addEventListener("click", (e) => {
+        if (e.detail >= 2) {
+            showDownloadPrompt(insertIdx);
+        };
+    });
     icon.style.left = (Math.random() * (parentRect.width - tempRect.width)) + 'px';
     icon.style.top = (Math.random() * (parentRect.height - tempRect.height)) + 'px';
     icon.style.backgroundImage = `url(${itm})`
@@ -214,3 +222,13 @@ async function start() {
 };
 
 start();
+
+function openFullscreen() {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+        document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+        document.documentElement.msRequestFullscreen();
+    }
+};

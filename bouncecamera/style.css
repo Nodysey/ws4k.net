@@ -149,7 +149,7 @@ p {
     z-index: 333;
     border-radius: 36px;
     overflow: hidden;
-    transition: height .3s ease;
+    transition: height .3s ease, width .3s ease;
 }
 #add-shape .buttons {
     display: flex;
@@ -200,6 +200,7 @@ p {
     display: flex;
     justify-content: center;
     position: relative;
+    transition: height .3s ease, width .3s ease;
 }
 #add-shape .input .countdown {
     width: 100%;
@@ -236,6 +237,129 @@ p {
     height: 100%;
 }
 #add-shape-photo {
+    width: auto;
+    height: 100%;
+}
+
+
+#download-shape {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 332;
+    background-color: rgba(0, 0, 0, 0.627);
+}
+#download-shape-content {
+    display: block;
+    position: fixed;
+    width: 400px;
+    height: 488px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.251);
+    z-index: 333;
+    border-radius: 36px;
+    overflow: hidden;
+
+    transition: height .3s ease;
+    animation: height-in .3s ease;
+}
+@keyframes height-in {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 488px;
+    }
+}
+#download-shape .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#download-shape .buttons button {
+    border: 0;
+    margin: 8px;
+    border-radius: 64px;
+    width: 72px;
+    height: 72px;
+    font-size: 12pt;
+}
+#download-shape-download {
+    background-color: #2bb8e7;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#download-shape-close {
+    justify-content: center;
+    align-items: center;
+}
+#download-shape .buttons button span, #addbtn span {
+    font-size: 48px !important;
+}
+#download-shape .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+}
+#download-shape .input {
+    width: 100%;
+    height: 400px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+#download-shape .input .countdown {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.502);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#download-shape .input .countdown span {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 128px;
+}
+#download-shape .output {
+    width: 100%;
+    height: 400px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+#download-shape-snapshot {
+    width: 240px;
+    height: 240px;
+    display: none;
+}
+#download-shape-preview {
+    width: auto;
+    height: 100%;
+}
+#download-shape-photo {
     width: auto;
     height: 100%;
 }
