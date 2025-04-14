@@ -1,6 +1,6 @@
 document.getElementById("addbtn").addEventListener("click", start)
 
-var width = 240;    // We will scale the photo width to this
+var width = 640;    // We will scale the photo width to this
 var height = 0;     // This will be computed based on the input stream
 
 var streaming = false;
@@ -98,6 +98,8 @@ function takePicture() {
             audio.play();
         }
     }, 1000);
+    const audio = new Audio("sfx/countdown.mp3");
+    audio.play();
 };
 
 async function addShape() {
