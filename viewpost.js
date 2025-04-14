@@ -1,4 +1,5 @@
 function getFormattedTime(time) {
+    
     const date = new Date(Date.parse(time));
     const now = new Date();
     if (date.getDate() === now.getDate() && date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear()) {
@@ -8,7 +9,7 @@ function getFormattedTime(time) {
         // posted yesterday
         return `Yesterday at ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`
     } else {
-        return `${date.getFullYear()}-${String(date.getMonth()).padStart(2,'0')}-${String(date.getDay()).padStart(2,'0')} ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2,'0')}-${String(date.getDay()).padStart(2,'0')} ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
     }
 }
 fetch("/feed.xml")
