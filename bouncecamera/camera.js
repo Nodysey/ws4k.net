@@ -64,6 +64,7 @@ function clearPhoto() {
 function takePicture() {
     const countDown = document.querySelector("#add-shape .input .countdown span");
     const countDownWrap = document.querySelector("#add-shape .input .countdown");
+    document.querySelector("#add-shape-content").style.height = "400px";
     countDownWrap.style.display = "flex";
     let countdownValue = 5;
     countDown.textContent = countdownValue;
@@ -83,6 +84,7 @@ function takePicture() {
                 context.drawImage(video, 0, 0, width, height);
                 const data = canvas.toDataURL("image/png");
                 photo.setAttribute("src", data);
+                document.querySelector("#add-shape-content").style.height = "488px";
                 document.querySelector("#add-shape .input").style.display = "none";
                 document.querySelector("#add-shape .output").style.display = "flex";
                 countDownWrap.style.display = "none";
