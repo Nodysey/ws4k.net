@@ -8,12 +8,13 @@
             let countdownAudio;
             document.addEventListener("DOMContentLoaded", () => {
                 countdownAudio = new Audio("sfx/countdown.mp3");
-                shutterAudio = new Audio("sfx/shutter.mp3");
+                bashutterAudio = new Audio("sfx/shutter.mp3");
             });
         </script>
     </head>
     <body>
         <button id="addbtn"><span class="material-symbols-outlined">add</span></button>
+        <button id="dl-tooltip">Click a ball to view the photo</button>
         <div id="add-shape">
             <div id="add-shape-content">
                 <div class="content">
@@ -38,9 +39,9 @@
         <div id="download-shape">
             <div id="download-shape-content">
                 <div class="content">
-                    <div class="input" id="download-shape-preview">
-                    </div>
+                    <div class="input" id="download-shape-preview"></div>
                     <div class="output">
+                        <canvas id="download-shape-qrcode"></canvas>
                         <span style="font-size: 22pt;" id="downloaded-shape-link"></span>
                         <span style="font-size: 14pt;">Download the image within 1 hour.</span>
                     </div>
@@ -54,6 +55,7 @@
         <div id="shapes">
 
         </div>
+        <script src="qrcode.js"></script>
         <script src="index.js"></script>
         <script src="camera.js"></script>
     </body>

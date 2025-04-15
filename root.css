@@ -2,16 +2,8 @@
 * {
     --background: #3a3a5a;
     --background-light: #44446a;
-    --accent: var(--pal-3);
+    --accent: #aeacfe;
     --secondary: #8febac;
-
-    --pal-1: #ffffff;
-    --pal-2: #cccaff;
-    --pal-3: #aeacfe;
-    --pal-4: #7f7aff;
-    --pal-5: #5d57cd;
-    --pal-6: #ffe7df;
-    --pal-7: #ffbae4;
     font-family: "IBM Plex Serif", serif;
     color: #fff;
     box-sizing: border-box;

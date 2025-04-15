@@ -117,6 +117,7 @@ async function addShape() {
 
 async function showDownloadPrompt(imgId) {
     document.getElementById("download-shape-download").style.display = "flex";
+    document.getElementById("download-shape-content").style.animationName = "height-in";
     var imgElement = document.querySelector(`.shape[data-id="${imgId}"]`);
     const dlPrompt = document.querySelector("#download-shape");
     document.querySelector("#download-shape-preview").style.backgroundImage = imgElement.style.backgroundImage;
@@ -158,6 +159,9 @@ async function download() {
             document.querySelector("#download-shape .input").style.display = "none";
             document.querySelector("#download-shape .output").style.display = "flex";
             const result = await response.text();
+            QRCode.toCanvas(document.getElementById('download-shape-qrcode'), result, function (error) {
+                if (error) console.error(error);
+            })
             document.getElementById("downloaded-shape-link").innerText = result.slice(8);
             console.log('File uploaded successfully:', result);
         } else {
@@ -169,7 +173,8 @@ async function download() {
 }
 
 async function closeDownloadWindow() {
-    document.getElementById("download-shape").style.display = "none";
+    document.getElementById("download-shape-content").style.animationName = "height-out";
+    setTimeout(() => {document.getElementById("download-shape").style.display = "none"}, 300);
 }
 
 
