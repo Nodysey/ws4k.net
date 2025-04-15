@@ -16,7 +16,6 @@ var pictureEvent;
 var currentImageId = -1;
 
 async function start() {
-    openFullscreen();
     document.getElementById("add-shape").style.display = "block";
     startButton.removeEventListener("click",start);
     document.querySelector("#add-shape .input").style.display = "flex";
@@ -39,6 +38,7 @@ async function start() {
                     video.setAttribute("height", height);
                     canvas.setAttribute("width", width);
                     canvas.setAttribute("height", height);
+                    openFullscreen();
                     startButton.addEventListener("click",(ev) => {
                         takePicture();
                         ev.preventDefault();

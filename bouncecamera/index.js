@@ -3,7 +3,7 @@ var insertIdx = -1;
 var images = [];
 
 function getStoredShapes() {
-    images = JSON.parse(localStorage.getItem("images")) == null ? [] : JSON.parse(localStorage.getItem("images"));
+    //images = JSON.parse(localStorage.getItem("images")) == null ? [] : JSON.parse(localStorage.getItem("images"));
 };
 
 function buildShapes() {
@@ -36,7 +36,7 @@ function addNewShape(img) {
     icon.style.left = (Math.random() * (parentRect.width - tempRect.width)) + 'px';
     icon.style.top = (Math.random() * (parentRect.height - tempRect.height)) + 'px';
     icon.style.backgroundImage = `url(${itm})`
-    localStorage.setItem("images", JSON.stringify(images));
+    //localStorage.setItem("images", JSON.stringify(images));
     advance(icon);
 };
 
