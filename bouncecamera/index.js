@@ -47,9 +47,6 @@ function addNewShape(img) {
     document.getElementById("shapes").appendChild(icon);
     insertIdx++;
     icon.setAttribute("data-id", insertIdx);
-    icon.addEventListener("dblclick", (e) => {
-        showDownloadPrompt(insertIdx);
-    });
     icon.style.left = (Math.random() * (parentRect.width - tempRect.width)) + 'px';
     icon.style.top = (Math.random() * (parentRect.height - tempRect.height)) + 'px';
     icon.style.backgroundImage = `url(${itm})`
@@ -121,10 +118,16 @@ function advance(icon) {
         }
     });
 
+    var initMouseX;
+    var initMouseY;
+
     icon.addEventListener('mousedown', (e) => {
         grabbing = true;
         let offsetX = e.clientX - icon.getBoundingClientRect().left;
         let offsetY = e.clientY - icon.getBoundingClientRect().top;
+
+        initMouseX = e.clientX;
+        initMouseY = e.clientY;
 
         lastMouseX = e.clientX;
         lastMouseY = e.clientY;
@@ -158,10 +161,14 @@ function advance(icon) {
             lastMouseY = e.clientY;
         };
 
-        const onMouseUp = () => {
+        const onMouseUp = (e) => {
             grabbing = false;
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
+            if (Math.abs(e.clientX - initMouseX) <= 10 && Math.abs(e.clientY - initMouseY) <= 10) {
+                // treat as a click and not as a drag
+                showDownloadPrompt(insertIdx);
+            }
         };
 
         document.addEventListener('mousemove', onMouseMove);
