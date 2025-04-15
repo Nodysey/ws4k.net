@@ -11,6 +11,8 @@ function buildShapes() {
         const itm = images[idx];
         const icon = document.createElement('div');
         icon.setAttribute('class','shape');
+        insertIdx++;
+        icon.setAttribute("data-id", insertIdx);
         const parentRect = document.getElementById("shapes").getBoundingClientRect();
         const tempRect = icon.getBoundingClientRect();
         document.getElementById("shapes").appendChild(icon);
