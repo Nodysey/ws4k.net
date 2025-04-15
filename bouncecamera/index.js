@@ -1,26 +1,10 @@
 var cornerHits = 0;
 var insertIdx = -1;
-var images = [
-    /*"img/VBA4.png",
-    "img/arn.png",
-    "img/austinlolz.png",
-    "img/awn.png",
-    "img/evilhurricane.png",
-    "img/floppa.png",
-    "img/gren.png",
-    "img/hainesnoidsplus.png",
-    "img/hurricanepfp.png",
-    "img/lmao.png",
-    "img/mypussy.png",
-    "img/ot.png",
-    "img/phl17fanclub.png",
-    "img/phonehomeicon.png",
-    "img/plus.png",
-    "img/projecta.png",
-    "img/rt.png",
-    "img/spark.png",
-    "img/weatherranch.png"*/
-];
+var images = [];
+
+function getStoredShapes() {
+    images = localStorage.getItem("images") == null || [] ? [] : localStorage.getItem("images");
+};
 
 function buildShapes() {
     for (let idx = 0; idx < images.length; idx++) {
@@ -50,6 +34,7 @@ function addNewShape(img) {
     icon.style.left = (Math.random() * (parentRect.width - tempRect.width)) + 'px';
     icon.style.top = (Math.random() * (parentRect.height - tempRect.height)) + 'px';
     icon.style.backgroundImage = `url(${itm})`
+    localStorage.setItem("images", images);
     advance(icon);
 };
 
@@ -222,6 +207,7 @@ function advance(icon) {
 };
 
 async function start() {
+    getStoredShapes();
     buildShapes();
     advance();
 };
