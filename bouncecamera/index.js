@@ -47,10 +47,8 @@ function addNewShape(img) {
     document.getElementById("shapes").appendChild(icon);
     insertIdx++;
     icon.setAttribute("data-id", insertIdx);
-    icon.addEventListener("click", (e) => {
-        if (e.detail >= 2) {
-            showDownloadPrompt(insertIdx);
-        };
+    icon.addEventListener("dblclick", (e) => {
+        showDownloadPrompt(insertIdx);
     });
     icon.style.left = (Math.random() * (parentRect.width - tempRect.width)) + 'px';
     icon.style.top = (Math.random() * (parentRect.height - tempRect.height)) + 'px';
