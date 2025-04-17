@@ -19,7 +19,7 @@ async function viewCount() {
     for (let idx = 0; idx < count.length; idx++) {
         const itm = count.charAt(idx);
         if (itm === "-") {
-            wrapper.innerHTML += `<span>-</span>`;
+            wrapper.innerHTML += `<span>0</span>`;
         } else {
             wrapper.innerHTML += `<span>${itm}</span>`;
         }
