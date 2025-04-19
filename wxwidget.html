@@ -4,8 +4,10 @@
 
 <head>
     <title>weather widget - the hainesverse</title>
-    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/music.css">
     <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
@@ -15,11 +17,33 @@
             <div class="section weather">
                 <div class="flex-row space-between">
                     <h2>weather</h2>
-                    <a href="https://weather.com"><img style="width: 28px; height: 28px;" src="img/icon/twc.svg" alt="The Weather Channel Logo"></a>
+                    <div class="flex-row">
+                        <a href="/wxwidget" style="width: 24px; height: 28px; font-size: 24pt; line-height: 0.76; color: var(--secondary);">+</a>
+                        <a href="https://weather.com"><img style="width: 28px; height: 28px;" src="img/icon/twc.svg" alt="The Weather Channel"></a>
+                    </div>
                 </div>
                 <hr>
                 <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
                 <span id="wx-cond">loading</span>
+            </div>
+            <div class="section visitors">
+                <img class="stamp" id="ot-stamp" src="img/generic-stamp.gif">
+                <h2>total visitors</h2>
+                <hr>
+                <div class="flex-row grow-row visitorcount">
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                </div>
+                <div class="flex-row space-between">
+                    <span style="font-size: 8pt;">@okayxairen permission granted</span>
+                    <span style="font-size: 8pt; color: var(--secondary); cursor: pointer; text-decoration: underline;" onclick="alert('If you get your internet from Comcast, the visitor count may not work as they have falsely flagged the backend server as malicious.\n\nAlternatively, you can visit http:\/\/hnds.lewolfyt.cc in a new tab and approve the site manually.')">help</span>
+                </div>
             </div>
             <div class="section socials" id="socials">
                 <a href="https://bsky.app/profile/ws4k.net" alt="Bluesky">
@@ -58,6 +82,7 @@
             <header class="section">
                 <a href="/">home</a>
                 <a href="/blog">blog</a>
+                <a href="/aboutme">who i am</a>
             </header>
             <div class="section">
                 <h2>weather widget</h2>
@@ -175,8 +200,24 @@
             </div>
         </div>
         <div id="aside-right" class="aside">
+            <div class="section music">
+                <div></div>
+                <h2 id="song-title">loading</h2>
+                <span id="song-artist">loading</span>
+                <div class="flex-row">
+                    <span id="clock">-:--</span>
+                    <input type="range" id="pregress" min="0">
+                    <span id="clock_neg">--:--</span>
+                </div>
+                <div class="flex-row justify-center playback-controls">
+                    <button id="playback-prev"><span class="material-symbols-outlined">skip_previous</span></button>
+                    <button id="playback-pause"><span class="material-symbols-outlined">play_arrow</span></button>
+                    <button id="playback-next"><span class="material-symbols-outlined">skip_next</span></button>
+                </div>
+                <audio id="music-player"></audio>
+            </div>
             <div class="section btn-footer">
-                <img class="fb-stamp" src="img/nina-stamp.png" title="literally me">
+                <img class="stamp" id="fb-stamp" src="img/nina-stamp.png" title="literally me">
                 <a href="https://ws4k.net/"><img src="/page-hotlink.png"></a>
                 <a href="https://dimden.dev/"><img src="https://dimden.dev/services/images/88x31.gif"></a>
                 <img src="img/bob.gif">
@@ -205,8 +246,9 @@
         </div>
     </div>
     <script src="oneko/oneko.js"></script>
-    <script src="index.js"></script>
-    <script src="weather.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/musicplayer.js"></script>
+    <script src="js/weather.js"></script>
     <script>
         const loc = document.getElementById("loc");
         const lang = document.getElementById("lang");
