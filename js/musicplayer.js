@@ -18,6 +18,13 @@ const songs = [
         "src": "/songs/LCDLSD.mp3"
     },
     {
+        "name": "LOCKED UP FOR EVERY GOOD REASON!",
+        "artist": "femtanyl",
+        "album": "",
+        "src": "/songs/locked up for every good reason!.mp3",
+        "alt": "unreleased song alert!"
+    },
+    {
         "name": "My Life is a Lie",
         "artist": "Mere Notilde",
         "album": "Rotti",
@@ -86,6 +93,12 @@ function loadSong(idx) {
     songArtist.innerText = song.artist;
     musicPlayer.src = song.src;
 
+    if (song.alt) {
+        songTitle.alt = song.alt;
+    } else {
+        songTitle.alt = "";
+    }
+
     clock.innerText = "-:--";
     clockNeg.innerText = "--:--";
     
@@ -113,6 +126,25 @@ musicPlayer.addEventListener('ended', () => {
     idx = (idx + 1) % songs.length;
     loadSong(idx);
 });
+
+musicPlayer.addEventListener('pause', () => {
+    pause();
+});
+
+musicPlayer.addEventListener('play', () => {
+    play();
+});
+
+document.addEventListener('keydown', (e) => {
+    console.log(e.key);
+    if (e.key === "MediaTrackNext" || e.key === "MediaFastForward") {
+        idx = (idx + 1) % songs.length;
+        loadSong(idx);
+    } else if (e.key === "MediaTrackPrevious" || e.key === "MediaRewind") {
+        idx = (idx - 1 + songs.length) % songs.length;
+        loadSong(idx);
+    }
+})
 
 musicPlayer.addEventListener('loadedmetadata', () => {
     //progress.max = musicPlayer.duration;
