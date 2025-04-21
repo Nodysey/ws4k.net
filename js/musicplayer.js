@@ -93,6 +93,7 @@ function loadSong(idx) {
     songArtist.innerText = song.artist;
     musicPlayer.src = song.src;
 
+    songTitle.alt = "";
     if (song.alt) {
         songTitle.alt = song.alt;
     } else {
