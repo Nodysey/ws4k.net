@@ -17,112 +17,35 @@
     <div id="parallax-background"></div>
     <div id="wrap">
         <div id="aside-left" class="aside">
-            <div class="section weather">
-                <div class="flex-row space-between">
-                    <h2>weather</h2>
-                    <div class="flex-row">
-                        <a href="/wxwidget" style="width: 24px; height: 28px; font-size: 24pt; line-height: 0.76; color: var(--secondary);">+</a>
-                        <a href="https://weather.com"><img style="width: 28px; height: 28px;" src="img/icon/twc.svg" alt="The Weather Channel"></a>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
-                <span id="wx-cond">loading</span>
-            </div>
-            <div class="section visitors">
-                <img class="stamp" id="ot-stamp" src="img/generic-stamp.gif">
-                <h2>total visitors</h2>
-                <hr>
-                <div class="flex-row grow-row visitorcount">
-                    <span style="color: var(--secondary)">-</span>
-                    <span style="color: var(--secondary)">-</span>
-                    <span style="color: var(--secondary)">-</span>
-                    <span style="color: var(--secondary)">-</span>
-                    <span style="color: var(--secondary)">-</span>
-                    <span style="color: var(--secondary)">-</span>
-                    <span style="color: var(--secondary)">-</span>
-                    <span style="color: var(--secondary)">-</span>
-                </div>
-                <div class="flex-row space-between">
-                    <span style="font-size: 8pt;">@okayxairen permission granted</span>
-                    <span style="font-size: 8pt; color: var(--secondary); cursor: pointer; text-decoration: underline;" onclick="alert('If you get your internet from Comcast, the visitor count may not work as they have falsely flagged the backend server as malicious.\n\nAlternatively, you can visit http:\/\/hnds.lewolfyt.cc in a new tab and approve the site manually.')">help</span>
-                </div>
-            </div>
-            <div class="section socials" id="socials">
-                <a href="https://bsky.app/profile/ws4k.net" alt="Bluesky">
-                    <img src="img/icon/bluesky.svg" alt="Bluesky Icon">
-                    Bluesky
-                </a>
-                <a href="https://youtube.com/@hainesnoids">
-                    <img src="img/icon/youtube.svg" alt="YouTube Icon">
-                    Youtube
-                </a>
-                <a href="https://discord.gg/9cT6rmxvT9">
-                    <img src="img/icon/discord.svg" alt="Discord Icon">
-                    Discord
-                </a>
-                <a href="https://github.com/nodysey">
-                    <img src="img/icon/github.svg" alt="GitHub Icon">
-                    GitHub
-                </a>
-                <a href="https://en.pronouns.page/@hainesnoids">
-                    <img src="img/icon/pronounspage.svg" alt="Pronouns.page Icon">
-                    Pronouns.page
-                </a>
-                <a href="https://steamcommunity.com/id/hainesnoids">
-                    <img src="img/icon/steam.svg" alt="Steam Icon">
-                    Steam
-                </a>
-            </div>
-            <!--<div class="section">
-                <iframe class="video aspect-wide" allowfullscreen style="width: 100%; height: auto;" src="https://streaming.weatherranch.com/player?v=hbs"></iframe>
-            </div>-->
-            <div class="section navlink">
-                <img class="stamp" id="tb-stamp" src="img/other-stamp.png">
-                <iframe width="180" height="180" style="border:none;width:auto;height:auto;aspect-ratio:1/1;" src="https://dimden.neocities.org/navlink/" name="neolink"></iframe>
-            </div>
-        </div>
-        <div id="main">
             <div class="top">
                 <img src="img/banner.png">
             </div>
-            <header class="section">
-                <a href="/" class="active">home</a>
-                <a href="/blog">blog</a>
-                <a href="/aboutme">who i am</a>
-            </header>
-            <div class="section">
-                <img class="stamp" id="wi-stamp" src="img/wii.png">
-                <h2>hi</h2>
-                <hr>
+            <ul class="nav">
+                <li><a href="/">home</a></li>
+                <li><a href="/blog">blog</a></li>
+                <li><a href="/projects">projects</a></li>
+                <li><a href="/aboutme">about me</a></li>
+            </ul>
+            <!--<div class="section">
+                <iframe class="video aspect-wide" allowfullscreen style="width: 100%; height: auto;" src="https://streaming.weatherranch.com/player?v=hbs"></iframe>
+            </div>-->
+            <iframe width="180" height="180" style="border:none;aspect-ratio:1/1;" src="https://dimden.neocities.org/navlink/" name="neolink"></iframe>
+        </div>
+        <div id="main">
+            <fieldset>
+                <legend>hi</legend>
                 <p>
                     welcome to my website! this is my newest personal website, only about a month old. I had older pages (nekoweb, neocities, etc.) that date to over two years ago, but those i've kinda abandoned.
                     if you can see the sidebars (sorry mobile users), i have a ton of hobbies.
                     <br><br>
-                    i also throw stamps around the page because i feel like it. it really takes a toll on my css file length but its worth it
+                    i plan to add more to this home page, but this is all you get for now.
                 </p>
-                <btwn></btwn>
-                <a href="/spinstar">Spinning Intellistar Logo</a>
-                <a href="/easip">Comcast EASip Utilities</a>
-            </div>
-            <div class="section" id="projects">
-                <h2>projects</h2>
-                <hr>
-                <a href="/opencube">OpenCube</a>
-                <a href="/opencrawl">OpenCrawl</a>
-                <a href="https://streaming.weatherranch.com">Weather Ranch Streaming</a>
-                <btwn></btwn>
-                <h2>small projects/demos</h2>
-                <hr>
-                <a href="/spinstar">Spinning Intellistar Logo</a>
-                <a href="/easip">Comcast EASip Utilities</a>
-                <a href="/bouncecamera">make your face bounce</a>
-            </div>
+            </fieldset>
             <!-- uncomment this when i get accepted into bucket -->
             <!--<div class="section" id="webrings">
                 <iframe id="bucket-webring" style="width: 100%; height: 3rem; border: none;" src="https://webring.bucketfish.me/embed.html?name=hainesnoids "></iframe> 
             </div>-->
-            <div class="section" id="joatman">
+            <!--<div class="section" id="joatman">
                 <h2>jack of all trades, master of none</h2>
                 <hr>
                 <div class="flex-row lang-itm">
@@ -171,53 +94,54 @@
                         <img src="img/IMG_1055.jpeg">
                     </div>
                 </gallery>
-            </div>
+            </div>-->
         </div>
         <div id="aside-right" class="aside">
-            <div class="section music">
-                <div></div>
-                <h2 id="song-title">loading</h2>
-                <span id="song-artist">loading</span>
+            <fieldset class="music">
+                <legend>music</legend>
+                <div>
+                    <h2 id="song-title">loading</h2>
+                    <span id="song-artist">loading</span>
+                    <div class="flex-row">
+                        <span id="clock">-:--</span>
+                        <input type="range" id="pregress" min="0">
+                        <span id="clock_neg">--:--</span>
+                    </div>
+                    <div class="flex-row justify-center playback-controls">
+                        <button id="playback-prev"><span class="material-symbols-outlined">skip_previous</span></button>
+                        <button id="playback-pause"><span class="material-symbols-outlined">play_arrow</span></button>
+                        <button id="playback-next"><span class="material-symbols-outlined">skip_next</span></button>
+                    </div>
+                    <audio id="music-player"></audio>
+                </div>
+            </fieldset>
+            <fieldset class="visitors">
+                <legend>hit counter</legend>
+                <div class="flex-row grow-row visitorcount">
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                    <span style="color: var(--secondary)">-</span>
+                </div>
+                <div class="flex-row space-between">
+                    <span style="font-size: 8pt;">@okayxairen permission granted</span>
+                </div>
+            </fieldset>
+            <fieldset class="weather" style="padding-bottom: 6px;">
+                <legend>weather</legend>
                 <div class="flex-row">
-                    <span id="clock">-:--</span>
-                    <input type="range" id="pregress" min="0">
-                    <span id="clock_neg">--:--</span>
+                    <img id="wx-icon" style="width: 40px; height: auto; aspect-ratio: 1 / 1; margin-right: 6px;">
+                    <div>
+                        <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
+                        <span id="wx-cond">loading</span>
+                    </div>
                 </div>
-                <div class="flex-row justify-center playback-controls">
-                    <button id="playback-prev"><span class="material-symbols-outlined">skip_previous</span></button>
-                    <button id="playback-pause"><span class="material-symbols-outlined">play_arrow</span></button>
-                    <button id="playback-next"><span class="material-symbols-outlined">skip_next</span></button>
-                </div>
-                <audio id="music-player"></audio>
-            </div>
-            <div class="section btn-footer">
-                <img class="stamp" id="fb-stamp" src="img/nina-stamp.png" title="literally me">
-                <a href="https://ws4k.net/"><img src="/page-hotlink.png"></a>
-                <a href="https://dimden.dev/"><img src="https://dimden.dev/services/images/88x31.gif"></a>
-                <img src="img/bob.gif">
-                <a href="https://fox29.com/"><img src="img/fox29.gif"></a>
-                <a href="https://fox29.com/shows/good-day"><img src="img/fox29gdp.gif"></a>
-                <a href="https://fan.nekoweb.org"><img src="https://fan.nekoweb.org/images/button.gif"></a>
-                <a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="https://jigsaw.w3.org/css-validator/images/vcss"></a>
-                <a href="https://nekoweb.org/"><img src="https://nekoweb.org/assets/buttons/button11.gif"></a>
-                <img src="img/trackball-hotlink.png" title="feel free to laugh at me">
-                <a href="https://thinliquid.dev"><img src="https://thinliquid.dev/thnlqd.png" alt="thinliquid's button"></a>
-                <img src="img/debian.gif">
-                <a title="you HAVE to check out fanblog it's so fucking good" href="http://fanblogcomic.neocities.org"><img src="img/fanblog.png"></a>
-                <img src="img/transnow2.gif" title="no, like NOW!">
-                <img src="img/nb.jpg">
-            </div>
-            <div class="section">
-                <img class="stamp" id="nb-stamp" src="img/zim.png">
-                <h2 style="padding-bottom: 8px;">Add my button!</h2>
-                <div style="display: flex; flex-direction: column;">
-                    <input type="text" value='<a href="https://ws4k.net"><img src="https://ws4k.net/page-hotlink.png"></a>' disabled copypaste="">
-                    <a href="https://ws4k.net"><img src="https://ws4k.net/page-hotlink.png"></a>
-                </div>
-            </div>
-            <div class="section">
-                <span>background art by my cool friend <a href="https://www.tumblr.com/ace-was-already-taken">ace</a></span>
-            </div>
+                <a href="./wxwidget" style="font-size: 8pt;">i want this on my site!</a>
+            </fieldset>
         </div>
     </div>
     <script src="oneko/oneko.js"></script>

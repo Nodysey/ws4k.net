@@ -6,7 +6,7 @@
     --background-light: #44446a;
     --accent: #aeacfe;
     --secondary: #85bcbc;
-    font-family: "IBM Plex Serif", "IBM Plex Sans JP", serif;
+    font-family: "Inconsolata", "IBM Plex Serif", "IBM Plex Sans JP", serif;
     color: #fff;
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -42,7 +42,7 @@ fieldset {
 	padding: 4px 12px 12px;
 	background-color: #11111b;
     width: 100%;
-    margin: 4px;
+    margin: 4px 0;
 }
 legend {
     padding: 0 10px;
@@ -50,6 +50,7 @@ legend {
 .nav {
     list-style-type: none;
     padding: 0;
+    width: 100%;
 }
 .nav li {
     height: 1rem;
@@ -57,6 +58,12 @@ legend {
 .nav li::before {
     content: "┣ ";
 	color: #585b70;
+}
+.nav li a {
+    color: #fff;
+}
+.nav li a:hover {
+    color: var(--accent);
 }
 iframe {
     border: 0;
@@ -67,8 +74,8 @@ a {
 }
 #main {
     width: 100%;
-    max-width: 800px;
-    margin: 10px 6px 60px;
+    max-width: 600px;
+    margin: 60px 6px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -176,6 +183,7 @@ input[type="text"], select, .weather-widget-preview {
     height: 100%;
     z-index: 2147483647;
     pointer-events: none;
+    overflow: hidden;
 }
 #tooltip {
     background-color: #26263b;
@@ -197,6 +205,7 @@ btwn {
     margin: 8px;
 }
 .btn-footer {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 6px;
@@ -209,7 +218,12 @@ btwn {
 .btn-footer img {
     width: 88px;
     height: 31px;
-    margin: 5px;
+    transition: all .3s ease;
+}
+.btn-footer img:hover {
+    transform: scale(1.4);
+    position: relative;
+    z-index: 11111;
 }
 .socials {
     flex-direction: column;
@@ -322,11 +336,12 @@ gallery .column {
     top: 0;
     left: 0;
     z-index: -9999;
+    opacity: .4;
 
     background-repeat: repeat;
     /*background-size: auto;*/
     background-position: left top;
-    background-image: url("../img/background.png");
+    background-image: url("../img/stars.png");
 }
 .spin-2min {
     /* Spinning Animation */
@@ -395,65 +410,22 @@ hr.sub {
     color: var(--secondary);
 }
 
+.stamps {
+    display: flex;
+    flex-direction: row;
+}
+
 .stamp {
     width: 99px;
     height: 56px;
     display: flex;
-    position: absolute;
     transition: all .3s ease;
-    z-index: 111;
 }
 
-.stamp#fb-stamp {
-    width: 99px;
-    height: 56px;
-    transform: rotate(-10deg);
-    right: -37px;
-    top: -25px;
-}
-
-.stamp#fb-stamp:hover {
-    transform: rotate(-8deg) scale(1.4);
-}
-
-.stamp#ot-stamp {
-    transform: rotate(6deg);
-    right: -37px;
-    top: -17px;
-}
-
-.stamp#ot-stamp:hover {
-    transform: rotate(9deg) scale(1.4);
-}
-
-.stamp#tb-stamp {
-    transform: rotate(-8deg);
-    left: -37px;
-    top: -22px;
-}
-
-.stamp#tb-stamp:hover {
-    transform: rotate(-13deg) scale(1.4);
-}
-
-.stamp#wi-stamp {
-    transform: rotate(-8deg);
-    right: -27px;
-    bottom: -12px;
-}
-
-.stamp#wi-stamp:hover {
-    transform: rotate(-4deg) scale(1.4);
-}
-
-.stamp#nb-stamp {
-    transform: rotate(6deg);
-    right: -37px;
-    top: -17px;
-}
-
-.stamp#nb-stamp:hover {
-    transform: rotate(3deg) scale(1.4);
+.stamp:hover {
+    transform: scale(1.4);
+    position: relative;
+    z-index: 11111;
 }
 
 .lang-itm {
@@ -480,7 +452,7 @@ hr.sub {
         width: calc(100vw - 12px);
         align-items: center;
     }
-    .navlink {
+    #aside-left iframe[name="neolink"] {
         display: none;
     }
     #main {
@@ -492,7 +464,7 @@ hr.sub {
         max-width: 100%;
     }
     #aside-left {
-        order: 2;
+        order: -1;
     }
     #aside-right {
         order: 3;

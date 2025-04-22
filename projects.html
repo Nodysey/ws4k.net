@@ -32,22 +32,43 @@
             <iframe width="180" height="180" style="border:none;aspect-ratio:1/1;" src="https://dimden.neocities.org/navlink/" name="neolink"></iframe>
         </div>
         <div id="main">
-            <div id="blog-content">
-
-            </div>
+            <fieldset>
+                <legend>projects</legend>
+                <a href="/opencube">OpenCube</a><br>
+                <a href="/opencrawl">OpenCrawl</a><br>
+                <a href="https://streaming.weatherranch.com">Weather Ranch Streaming</a><br>
+            </fieldset>
+            <fieldset>
+                <legend>small projects/demos</legend>
+                <a href="/spinstar">Spinning Intellistar Logo</a><br>
+                <a href="/easip">Comcast EASip Utilities</a><br>
+                <a href="/bouncecamera">make your face bounce</a><br>
+            </fieldset>
         </div>
         <div id="aside-right" class="aside">
-            <fieldset>
-                <legend>welcome to</legend>
-                <h2>hainesnoids' blog of awesomeness <a class="blog-feed" href="/feed.xml"><img src="/img/Feed-icon.svg" width="16" height="16"/></a></h2>
-                <span style="color: rgba(255,255,255,0.6); font-size: 8pt;">if you recognise the name good job</span>
+            <fieldset class="music">
+                <legend>music</legend>
+                <div>
+                    <h2 id="song-title">loading</h2>
+                    <span id="song-artist">loading</span>
+                    <div class="flex-row">
+                        <span id="clock">-:--</span>
+                        <input type="range" id="pregress" min="0">
+                        <span id="clock_neg">--:--</span>
+                    </div>
+                    <div class="flex-row justify-center playback-controls">
+                        <button id="playback-prev"><span class="material-symbols-outlined">skip_previous</span></button>
+                        <button id="playback-pause"><span class="material-symbols-outlined">play_arrow</span></button>
+                        <button id="playback-next"><span class="material-symbols-outlined">skip_next</span></button>
+                    </div>
+                    <audio id="music-player"></audio>
+                </div>
             </fieldset>
         </div>
     </div>
     <script src="oneko/oneko.js"></script>
     <script src="js/index.js"></script>
-    <script src="bin/x2js.min.js"></script>
-    <script src="js/feed.js"></script>
+    <script src="js/musicplayer.js"></script>
     <script src="js/visitorcount.js"></script>
     <script src="js/weather.js"></script>
 </body>

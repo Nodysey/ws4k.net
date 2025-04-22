@@ -17,6 +17,7 @@ async function getWeather() {
     document.getElementById("wx-name").innerText = `${location.location.city[0]}, ${location.location.adminDistrict[0]}, ${location.location.country[0]}`
     document.getElementById("wx-temp").innerText = `${data.temperature}°`;
     document.getElementById("wx-cond").innerText = data.wxPhraseLong;
+    document.getElementById("wx-icon").src = `icons/${String(data.iconCode).padStart(2,'0')}.svg`;
 }
 
 getWeather();

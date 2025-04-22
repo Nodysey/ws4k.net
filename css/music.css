@@ -4,6 +4,8 @@
     text-wrap: nowrap;
     width: 100%;
     overflow: hidden;
+    max-width: 214px;
+    display: inline-block;
     /*mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 100%) 10%,rgb(0 0 0 / 100%) 90%,transparent 100%);*/
 }
 #song-title {

@@ -7,6 +7,7 @@ async function getWeather() {
         .then(data => {return data});
     document.getElementById("wx-temp").innerText = `${data.temperature}°`;
     document.getElementById("wx-cond").innerText = data.wxPhraseLong;
+    document.getElementById("wx-icon").src = `/weather/icons/${String(data.iconCode).padStart(2,'0')}.svg`;
 }
 
 getWeather();

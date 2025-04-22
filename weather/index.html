@@ -4,26 +4,22 @@
 
 <head>
     <title>weather widget - the hainesverse</title>
-    <link rel="stylesheet" href="css/root.css">
-    <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="root.css">
     <link rel="icon" href="/img/favicon.png" type="image/png">
 </head>
 
 <body>
-    <div id="wrap">
-        <div class="section weather">
-            <div class="flex-row space-between">
-                <h2 id="wx-name">weather</h2>
-                <div class="flex-row">
-                    <a href="https://ws4k.net/wxwidget" style="width: 24px; height: 28px; font-size: 24pt; line-height: 0.76; color: var(--secondary);">+</a>
-                    <a href="https://weather.com"><img style="width: 28px; height: 28px;" src="twc.svg" alt="The Weather Channel"></a>
-                </div>
+    <fieldset class="weather" style="padding-bottom: 6px;">
+        <legend id="wx-name">weather</legend>
+        <div class="flex-row">
+            <img id="wx-icon" style="width: 40px; height: auto; aspect-ratio: 1 / 1; margin-right: 6px;">
+            <div>
+                <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
+                <span id="wx-cond">loading</span>
             </div>
-            <hr>
-            <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
-            <span id="wx-cond">loading</span>
         </div>
-    </div>
+        <a href="https://ws4k.net/wxwidget" style="font-size: 8pt;">i want this on my site!</a>
+    </fieldset>
     <script src="weather.js"></script>
 </body>
 
