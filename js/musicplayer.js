@@ -1,5 +1,17 @@
 const songs = [
     {
+        "name": "do dodo do do do",
+        "artist": "lvnafir",
+        "album": "do dodo do do do",
+        "src": "/songs/do dodo do do do.wav"
+    },
+    {
+        "name": "Homeless",
+        "artist": "Fishcracks143",
+        "album": "Homeless - Single",
+        "src": "/songs/crystal_waters_ukg_flip_premaster.wav"
+    },
+    {
         "name": "ケーキトップ",
         "artist": "Mere Notilde",
         "album": "Rotti",
@@ -23,42 +35,6 @@ const songs = [
         "album": "",
         "src": "/songs/locked up for every good reason!.mp3",
         "alt": "unreleased song alert!"
-    },
-    {
-        "name": "My Life is a Lie",
-        "artist": "Mere Notilde",
-        "album": "Rotti",
-        "src": "/songs/song 46.wav"
-    },
-    {
-        "name": "Overreach",
-        "artist": "Mere Notilde",
-        "album": "Rotti",
-        "src": "/songs/song 48.wav"
-    },
-    {
-        "name": "Your Love is a Lie",
-        "artist": "Mere Notilde",
-        "album": "Rotti",
-        "src": "/songs/song 49.wav"
-    },
-    {
-        "name": "Terrific",
-        "artist": "Mere Notilde",
-        "album": "Terrific",
-        "src": "/songs/Terrific.wav"
-    },
-    {
-        "name": "愛でる - グレープフルーツ",
-        "artist": "Mere Notilde",
-        "album": "Rotti",
-        "src": "/songs/song 50.wav"
-    },
-    {
-        "name": "あいこ, あいこ",
-        "artist": "Mere Notilde",
-        "album": "Rotti",
-        "src": "/songs/song 51.wav"
     },
     {
         "name": "GIRL HELL 1999",

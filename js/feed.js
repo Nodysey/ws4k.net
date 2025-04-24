@@ -31,15 +31,20 @@ fetch("/feed.xml")
         for (let idx = 0; idx < items.length; idx++) {
             const itm = items[idx];
             buffer += `
-            <fieldset>
-                <legend>${itm.author}<span class="dot"> • </span>${getFormattedTime(itm.pubDate)}</legend>
+            <div class="section">
                 <a class="title-link" href="./viewpost?id=${itm.guid}">
-                    <h2 style="margin-bottom: 2px">${itm.title}</h2>
+                    <h2>${itm.title}</h2>
                 </a>
+                <div class="post-title flex-row align-baseline">
+                    <span>${itm.author}</span>
+                    <span class="dot"> • </span>
+                    <span>${getFormattedTime(itm.pubDate)}</span>
+                </div>
+                
                 <p>
                     ${itm.description}
                 </p>
-            </fieldset>
+            </div>
             `
             console.log("parsed feed item" + idx)
         };

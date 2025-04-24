@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 * {
-    --background: #3a3a5a;
-    --background-light: #44446a;
+    --background: #11111b;
+    --background-light: #53536b;
     --accent: #aeacfe;
-    --secondary: #85bcbc;
+    --secondary: #74dc95;
     font-family: "Inconsolata", "IBM Plex Serif", "IBM Plex Sans JP", serif;
     color: #fff;
     box-sizing: border-box;
@@ -94,17 +94,20 @@ a {
 .section {
     width: 100%;
     height: fit-content;
-    padding: 8px;
-    margin: 8px 0;
+    padding: 8px 12px;
+    margin: 0;
 
     display: flex;
     flex-direction: column;
     position: relative;
 
-    background: linear-gradient(to bottom, var(--background-light), var(--background)) no-repeat, var(--background);
+    border-top: 1px solid var(--background-light);
+    background-color: rgba(17, 17, 27,0.9);
+
+    /*background: linear-gradient(to bottom, var(--background-light), var(--background)) no-repeat, var(--background);
     background-size: 100% 48px, auto;
     border: 2px solid var(--background);
-    box-shadow: 2px 2px 0 var(--accent);
+    box-shadow: 2px 2px 0 var(--accent);*/
 }
 header {
     height: 40px;

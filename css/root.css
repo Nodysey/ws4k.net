@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 * {
-    --background: #3a3a5a;
-    --background-light: #44446a;
+    --background: #11111b;
+    --background-light: #53536b;
     --accent: #aeacfe;
-    --secondary: #85bcbc;
-    font-family: "Inconsolata", "IBM Plex Serif", "IBM Plex Sans JP", serif;
+    --secondary: #74dc95;
+    font-family: "Inconsolata", "IBM Plex Sans JP", serif;
     color: #fff;
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -74,17 +74,20 @@ a {
 }
 #main {
     width: 100%;
-    max-width: 600px;
-    margin: 60px 6px;
+    max-width: 800px;
+    margin: 60px 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
+    border: 1px solid #585b70;
+    padding: 0;
+    background-color: rgba(17, 17, 27,0.9);
 }
 .aside {
     width: 100%;
     max-width: 240px;
-    margin: 60px 6px;
+    margin: 60px 0px;
     flex-grow: 0;
     display: flex;
     flex-direction: column;
@@ -94,31 +97,46 @@ a {
 .section {
     width: 100%;
     height: fit-content;
-    padding: 8px;
-    margin: 8px 0;
+    padding: 8px 12px;
+    margin: 0;
 
     display: flex;
     flex-direction: column;
     position: relative;
 
-    background: linear-gradient(to bottom, var(--background-light), var(--background)) no-repeat, var(--background);
+    border-top: 1px solid var(--background-light);
+
+    /*background: linear-gradient(to bottom, var(--background-light), var(--background)) no-repeat, var(--background);
     background-size: 100% 48px, auto;
     border: 2px solid var(--background);
-    box-shadow: 2px 2px 0 var(--accent);
+    box-shadow: 2px 2px 0 var(--accent);*/
 }
 header {
-    height: 40px;
-    flex-direction: row !important;
+    width: 100%;
+    height: 28px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    margin-top: 0 !important;
+    border-top: 1px solid var(--background-light);
 }
 header a {
     color: #fff;
     font-weight: bold;
-    font-size: 20pt;
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
-    margin: 0 6px;
+    font-size: 16pt;
+    text-decoration: none;
+
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header a:hover {
+    background-color: var(--accent);
+    color: var(--background);
 }
 header a.active {
     text-decoration-color: var(--secondary);
@@ -274,27 +292,6 @@ btwn {
 p {
     display: initial;
 }
-.has-gallery {
-    padding: 0 4px;
-}
-.has-gallery h2 {
-    margin: 4px;
-}
-gallery {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-gallery .column {
-    flex: 33.33%;
-    max-width: 33.33%;
-    padding: 4px;
-}
-.column img {
-    padding-top: 4px;
-    width: 100%;
-}
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -336,12 +333,12 @@ gallery .column {
     top: 0;
     left: 0;
     z-index: -9999;
-    opacity: .4;
+    opacity: 1;
 
     background-repeat: repeat;
-    /*background-size: auto;*/
+    background-size: 50%;
     background-position: left top;
-    background-image: url("../img/stars.png");
+    background-image: url("../img/background.png");
 }
 .spin-2min {
     /* Spinning Animation */
@@ -382,7 +379,7 @@ gallery .column {
     aspect-ratio: 800 / 144;
     margin-top: 8px;
     margin-bottom: 0 !important;
-    display: inherit;
+    display: block;
     overflow: hidden;
 }
 
@@ -391,9 +388,6 @@ gallery .column {
     height: 100%;
 
     display: inherit;
-    z-index: -1;
-    position: sticky;
-    top: 0;
 }
 #oneko {
     position: relative;
@@ -410,22 +404,65 @@ hr.sub {
     color: var(--secondary);
 }
 
-.stamps {
-    display: flex;
-    flex-direction: row;
-}
-
 .stamp {
     width: 99px;
     height: 56px;
     display: flex;
+    position: absolute;
     transition: all .3s ease;
+    z-index: 111;
 }
 
-.stamp:hover {
-    transform: scale(1.4);
-    position: relative;
-    z-index: 11111;
+.stamp#fb-stamp {
+    width: 99px;
+    height: 56px;
+    transform: rotate(-10deg);
+    right: -37px;
+    top: -25px;
+}
+
+.stamp#fb-stamp:hover {
+    transform: rotate(-8deg) scale(1.4);
+}
+
+.stamp#ot-stamp {
+    transform: rotate(6deg);
+    right: -37px;
+    top: -17px;
+}
+
+.stamp#ot-stamp:hover {
+    transform: rotate(9deg) scale(1.4);
+}
+
+.stamp#tb-stamp {
+    transform: rotate(-8deg);
+    left: -37px;
+    top: -22px;
+}
+
+.stamp#tb-stamp:hover {
+    transform: rotate(-13deg) scale(1.4);
+}
+
+.stamp#wi-stamp {
+    transform: rotate(-8deg);
+    right: -27px;
+    bottom: -12px;
+}
+
+.stamp#wi-stamp:hover {
+    transform: rotate(-4deg) scale(1.4);
+}
+
+.stamp#nb-stamp {
+    transform: rotate(6deg);
+    right: -37px;
+    top: -17px;
+}
+
+.stamp#nb-stamp:hover {
+    transform: rotate(3deg) scale(1.4);
 }
 
 .lang-itm {

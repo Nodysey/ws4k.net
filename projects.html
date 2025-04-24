@@ -16,54 +16,29 @@
 	</div>
     <div id="parallax-background"></div>
     <div id="wrap">
-        <div id="aside-left" class="aside">
+        <div id="main">
             <div class="top">
                 <img src="img/banner.png">
             </div>
-            <ul class="nav">
-                <li><a href="/">home</a></li>
-                <li><a href="/blog">blog</a></li>
-                <li><a href="/projects">projects</a></li>
-                <li><a href="/aboutme">about me</a></li>
-            </ul>
-            <!--<div class="section">
-                <iframe class="video aspect-wide" allowfullscreen style="width: 100%; height: auto;" src="https://streaming.weatherranch.com/player?v=hbs"></iframe>
-            </div>-->
-            <iframe width="180" height="180" style="border:none;aspect-ratio:1/1;" src="https://dimden.neocities.org/navlink/" name="neolink"></iframe>
-        </div>
-        <div id="main">
-            <fieldset>
-                <legend>projects</legend>
-                <a href="/opencube">OpenCube</a><br>
-                <a href="/opencrawl">OpenCrawl</a><br>
-                <a href="https://streaming.weatherranch.com">Weather Ranch Streaming</a><br>
-            </fieldset>
-            <fieldset>
-                <legend>small projects/demos</legend>
-                <a href="/spinstar">Spinning Intellistar Logo</a><br>
-                <a href="/easip">Comcast EASip Utilities</a><br>
-                <a href="/bouncecamera">make your face bounce</a><br>
-            </fieldset>
-        </div>
-        <div id="aside-right" class="aside">
-            <fieldset class="music">
-                <legend>music</legend>
-                <div>
-                    <h2 id="song-title">loading</h2>
-                    <span id="song-artist">loading</span>
-                    <div class="flex-row">
-                        <span id="clock">-:--</span>
-                        <input type="range" id="pregress" min="0">
-                        <span id="clock_neg">--:--</span>
-                    </div>
-                    <div class="flex-row justify-center playback-controls">
-                        <button id="playback-prev"><span class="material-symbols-outlined">skip_previous</span></button>
-                        <button id="playback-pause"><span class="material-symbols-outlined">play_arrow</span></button>
-                        <button id="playback-next"><span class="material-symbols-outlined">skip_next</span></button>
-                    </div>
-                    <audio id="music-player"></audio>
-                </div>
-            </fieldset>
+            <header>
+                <a href="/" class="active">home</a>
+                <a href="/blog">blog</a>
+                <a href="/projects">projects</a>
+                <a href="/gallery">gallery</a>
+                <a href="/aboutme">who i am</a>
+            </header>
+            <div class="section">
+                <h2>projects</h2>
+                <a href="/opencube">OpenCube</a>
+                <a href="/opencrawl">OpenCrawl</a>
+                <a href="https://streaming.weatherranch.com">Weather Ranch Streaming</a>
+            </div>
+            <div class="section">
+                <h2>small projects/demos</h2>
+                <a href="/spinstar">Spinning Intellistar Logo</a>
+                <a href="/easip">Comcast EASip Utilities</a>
+                <a href="/bouncecamera">make your face bounce</a>
+            </div>
         </div>
     </div>
     <script src="oneko/oneko.js"></script>

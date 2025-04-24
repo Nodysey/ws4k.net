@@ -35,14 +35,16 @@ fetch("/feed.xml")
         for (let idx = 0; idx < items.length; idx++) {
             const itm = items[idx];
             buffer += `
-            <fieldset>
-                <legend>${getFormattedTime(itm.pubDate)}</legend>
-                <a class="title-link">
-                    <h2 style="margin-bottom: 2px">${itm.title}</h2>
-                </a>
-                <span>${itm.author}</span>
-            </fieldset>
-            <fieldset style="padding: 8px">
+            <div class="section">
+                <h2>${itm.title}</h2>
+                
+                <div class="post-title flex-row align-baseline">
+                    <span>${itm.author}</span>
+                    <span class="dot"> • </span>
+                    <span>${getFormattedTime(itm.pubDate)}</span>
+                </div>
+            </div>
+            <div class="section single-post">
                 <p>
                     ${itm.description}
                 </p>
