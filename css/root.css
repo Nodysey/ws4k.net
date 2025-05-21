@@ -586,3 +586,56 @@ button:active, a:active {
 }
 */
 /* body{background: radial-gradient(ellipse at center,hsl(211.1, 81.7%, 40.8%), transparent),radial-gradient(ellipse at top right,hsl(312.2, 70.5%, 41.2%), transparent),radial-gradient(ellipse at top left,hsl(277, 42%, 48%), transparent),radial-gradient(ellipse at bottom right, hsla(126.5, 77.5%, 51.2%, 0.4), transparent),#08155e;} */
+.lastfm h2 {
+    margin-bottom: 4px;
+}
+.lastfm .listening-art {
+    width: 120px;
+    height: 120px;
+    aspect-ratio: 1 / 1;
+}
+.lastfm .listening-details {
+    margin-left: 12px;
+}
+webring {
+    display: flex;
+    flex-direction: row;
+}
+webring .webring-title {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14pt;
+    color: #fff;
+}
+webring button {
+    background-color: #3a3a5a;
+    border: 2px solid #44446a;
+    box-shadow: 2px 2px 0 #26263b;
+    border-radius: 16px;
+
+    padding: 2px;
+    margin: 2px;
+    font-size: 16pt;
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+webring button span {
+    font-size: 16pt;
+}
+
+webring button:active {
+    background: linear-gradient(to bottom, #30304b, #26263b) no-repeat, #26263b;
+    border: 2px solid #26263b;
+    box-shadow: none;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
