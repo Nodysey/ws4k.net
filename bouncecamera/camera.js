@@ -118,7 +118,7 @@ async function addShape() {
 async function showDownloadPrompt(imgId) {
     document.getElementById("download-shape-download").style.display = "flex";
     document.getElementById("download-shape-content").style.animationName = "height-in";
-    var imgElement = document.querySelector(`.shape[data-id="${imgId}"]`);
+    var imgElement = await document.querySelector(`.shape[data-id="${imgId}"]`);
     const dlPrompt = document.querySelector("#download-shape");
     document.querySelector("#download-shape-preview").style.backgroundImage = imgElement.style.backgroundImage;
     dlPrompt.style.display = "block";

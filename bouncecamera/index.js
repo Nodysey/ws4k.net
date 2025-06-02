@@ -154,7 +154,7 @@ function advance(icon) {
             document.removeEventListener('mouseup', onMouseUp);
             if (Math.abs(e.clientX - initMouseX) <= 10 && Math.abs(e.clientY - initMouseY) <= 10) {
                 // treat as a click and not as a drag
-                showDownloadPrompt(insertIdx);
+                showDownloadPrompt(Number(icon.getAttribute("data-id")));
             }
         };
 
