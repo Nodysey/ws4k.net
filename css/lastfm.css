@@ -1,0 +1,11 @@
+.art_wrapper {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    perspective: 256px;
+    transition: transform .5s cubic-bezier(0.33, 1, 0.68, 1);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
