@@ -6,6 +6,7 @@
     <title>the hainesverse</title>
     <link rel="stylesheet" href="css/root.css">
     <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/lastfm.css">
     <link rel="icon" href="img/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -21,13 +22,18 @@
                 <div class="flex-row space-between">
                     <h2>weather</h2>
                     <div class="flex-row">
-                        <a href="/wxwidget" style="width: 24px; height: 28px; font-size: 24pt; line-height: 0.76; color: var(--secondary);">+</a>
+                        <a href="/wxwidget" title="i want this on my site!" style="width: 24px; height: 28px; font-size: 24pt; line-height: 0.76; color: var(--secondary);">+</a>
                         <a href="https://weather.com"><img style="width: 28px; height: 28px;" src="img/icon/twc.svg" alt="The Weather Channel"></a>
                     </div>
                 </div>
-                
-                <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
-                <span id="wx-cond">loading</span>
+                <hr>
+                <div class="flex-row" style="margin: 0 0 3px;">
+                    <img id="wx-icon" style="width: 40px; height: auto; aspect-ratio: 1 / 1; margin-right: 6px;" src="icons/27.svg">
+                    <div>
+                        <h2 id="wx-temp" title="i use fahrenheit becuse it provides a decent 0-100 scale">loading</h2>
+                        <span id="wx-cond">loading</span>
+                    </div>
+                </div>
             </div>
             <div class="section visitors">
                 <h2>total visitors</h2>
@@ -78,7 +84,7 @@
             <div class="top">
                 <img src="img/banner.png">
             </div>
-            <header>
+            <header class="section">
                 <a href="/" class="active">home</a>
                 <a href="/blog">blog</a>
                 <a href="/projects">projects</a>
@@ -88,6 +94,7 @@
             <div class="section">
                 <img class="stamp" id="wi-stamp" src="img/wii.png">
                 <h2>hi</h2>
+                <hr>
                 <p>
                     welcome to my website! this is my newest personal website, only about a month old. I had older pages (nekoweb, neocities, etc.) that date to over two years ago, but those i've kinda abandoned.
                     if you can see the sidebars (sorry mobile users), i have a ton of hobbies.
@@ -100,7 +107,9 @@
                 <template id="lastfm-template">
                     <h2></h2>
                     <div class="flex-row">
-                        <img class="listening-art" alt="album art">
+                        <div class="art_wrapper">
+                            <img class="listening-art" alt="album art">
+                        </div>
                         <div class="listening-details">
                             <!-- todo: refactor because holy hell -->
                             <h1 class="listening-title" style="width: 20ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h1>

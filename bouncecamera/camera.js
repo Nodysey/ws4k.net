@@ -15,6 +15,16 @@ var pictureEvent;
 
 var currentImageId = -1;
 
+async function startCameraFeed(deviceId) {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+    }
+    stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: deviceId } }, audio: false })
+    video.srcObject = stream;
+    video.play();
+    feedActive = true;
+}
+
 async function start() {
     document.getElementById("add-shape").style.display = "block";
     startButton.removeEventListener("click",start);
@@ -22,14 +32,34 @@ async function start() {
     document.querySelector("#add-shape .output").style.display = "none";
 
     document.querySelector("#add-shape-take-picture").style.display = "flex";
+    document.querySelector("#add-shape-close").style.display = "flex";
     document.querySelector("#add-shape-apply").style.display = "none";
     document.querySelector("#add-shape-retake").style.display = "none";
     if (!feedActive) {
         try {
-            stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-            video.srcObject = stream;
-            video.play();
-            feedActive = true;
+            const cameraSelect = document.getElementById('add-shape-camera-select');
+            async function getVideoDevices() {
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                return devices.filter(device => device.kind === 'videoinput');
+            }
+            async function populateCameraSelect() {
+                const videoDevices = await getVideoDevices();
+                cameraSelect.innerHTML = '';
+
+                videoDevices.forEach(device => {
+                    const option = document.createElement('option');
+                    option.value = device.deviceId;
+                    option.textContent = device.label || "Unknown Camera";
+                    cameraSelect.appendChild(option);
+                });
+                dropdownMain();
+
+                startCameraFeed(videoDevices[0].deviceId);
+            }
+            cameraSelect.addEventListener("change", (event) => {
+                startCameraFeed(event.target.options[event.target.selectedIndex].getAttribute("value"));
+            });
+            populateCameraSelect();
             video.addEventListener("canplay",(ev) => {
                 if (!streaming) {
                     height = (video.videoHeight / video.videoWidth) * width;
@@ -91,6 +121,7 @@ function takePicture() {
                 countDownWrap.style.display = "none";
 
                 document.querySelector("#add-shape-take-picture").style.display = "none";
+                document.querySelector("#add-shape-close").style.display = "none";
                 document.querySelector("#add-shape-apply").style.display = "flex";
                 document.querySelector("#add-shape-retake").style.display = "flex";
             } else {
@@ -181,6 +212,9 @@ async function closeDownloadWindow() {
 startButton.addEventListener("click",start);
 document.getElementById("add-shape-apply").addEventListener("click",addShape);
 document.getElementById("add-shape-retake").addEventListener("click",start);
+document.getElementById("add-shape-close").addEventListener("click",() => {
+    document.getElementById("add-shape").style.display = "none";
+});
 
 document.getElementById("download-shape-close").addEventListener("click",closeDownloadWindow);
 document.getElementById("download-shape-download").addEventListener("click",download);

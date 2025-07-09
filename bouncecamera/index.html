@@ -13,8 +13,9 @@
         </script>
     </head>
     <body>
-        <button id="addbtn"><span class="material-symbols-outlined">add</span></button>
+        <button id="addbtn"><span class="material-symbols-outlined">photo_camera</span></button>
         <button id="dl-tooltip">Click a ball to view the photo</button>
+        <button id="dl-disable-btn"><span class="material-symbols-outlined">file_download_off</span></button>
         <div id="add-shape">
             <div id="add-shape-content">
                 <div class="content">
@@ -30,9 +31,14 @@
                     </div>
                 </div>
                 <div class="buttons">
+                    <button id="add-shape-close"><span class="material-symbols-outlined">close</span></button>
                     <button id="add-shape-take-picture"><span class="material-symbols-outlined">photo_camera</span></button>
                     <button id="add-shape-retake"><span class="material-symbols-outlined">close</span></button>
                     <button id="add-shape-apply"><span class="material-symbols-outlined">check</span></button>
+                </div>
+                <div class="add-shape-camera-select">
+                    <!-- note the difference between class and id -->
+                    <select id="add-shape-camera-select"></select>
                 </div>
             </div>
         </div>
@@ -50,6 +56,9 @@
                     <button id="download-shape-download"><span class="material-symbols-outlined">download</span></button>
                     <button id="download-shape-close"><span class="material-symbols-outlined">close</span></button>
                 </div>
+            </div>
+            <div class="popup-alert" id="no-download-alert" style="display: none">
+                <p>Downloading has been disabled for this event.</p>
             </div>
         </div>
         <div id="shapes">

@@ -1,15 +1,27 @@
 const songs = [
     {
+        "name": "முன்னுதாரணம்",
+        "artist": "Tanger (feat. Treb & tiyu)",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 17 that one song (with Treb & tiyu).flac"
+    },
+    {
+        "name": "somewhere, someday,",
+        "artist": "Tanger (feat. lorem ipsum)",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 24 somewhere, someday,.flac"
+    },
+    {
         "name": "do dodo do do do",
         "artist": "lvnafir",
         "album": "do dodo do do do",
         "src": "/songs/do dodo do do do.wav"
     },
     {
-        "name": "Homeless",
-        "artist": "Fishcracks143",
-        "album": "Homeless - Single",
-        "src": "/songs/crystal_waters_ukg_flip_premaster.wav"
+        "name": "IMPULSE!",
+        "artist": "Tanger (feat. Inferno)",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 03 IMPULSE! (with Inferno).flac"
     },
     {
         "name": "ケーキトップ",
@@ -24,23 +36,52 @@ const songs = [
         "src": "/songs/01 Fooled By Your Love.mp3"
     },
     {
+        "name": "I LIKE LOUD THINGS",
+        "artist": "Tanger",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 05 I LIKE LOUD THINGS.flac"
+    },
+    {
+        "name": "wan!",
+        "artist": "Tanger (feat. Glitch Cat)",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 06 wan! (with Glitch Cat).flac"
+    },
+    {
         "name": "LCDLSD",
         "artist": "Artifyber",
         "album": "SPACED OUT",
         "src": "/songs/LCDLSD.mp3"
     },
     {
+        "name": "sludgecrank",
+        "artist": "Tanger",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 07 sludgecrank.flac"
+    },
+    {
         "name": "LOCKED UP FOR EVERY GOOD REASON!",
         "artist": "femtanyl",
         "album": "",
         "src": "/songs/locked up for every good reason!.mp3",
-        "alt": "unreleased song alert!"
+    },
+    {
+        "name": "head empty (interlude)",
+        "artist": "Tanger",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 09 head empty (interlude).flac"
     },
     {
         "name": "GIRL HELL 1999",
         "artist": "femtanyl",
         "album": "CHASER",
         "src": "/songs/GIRL HELL 1999.mp3"
+    },
+    {
+        "name": "BAD NUMBER!",
+        "artist": "Tanger (feat. disphing)",
+        "album": "Prefer not to say",
+        "src": "/songs/Tanger - Prefer not to say - 13 BAD NUMBER! (with disphing).flac"
     },
 ]
 

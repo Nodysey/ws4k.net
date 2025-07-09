@@ -1,6 +1,6 @@
-var cornerHits = 0;
-var insertIdx = -1;
-var images = [];
+let cornerHits = 0;
+let insertIdx = -1;
+let images = [];
 
 function getStoredShapes() {
     //images = JSON.parse(localStorage.getItem("images")) == null ? [] : JSON.parse(localStorage.getItem("images"));
@@ -225,3 +225,13 @@ function openFullscreen() {
         document.documentElement.msRequestFullscreen();
     }
 };
+
+function disableDownloading() {
+    document.getElementById("download-shape-download").setAttribute("disabled", "");
+    document.getElementById("no-download-alert").style.display = "block";
+    document.getElementById("dl-disable-btn").style.display = "none";
+    // also hide camera selector to prevent stupid people from breaking things
+    document.querySelector(".add-shape-camera-select").style.display = "none";
+}
+
+document.getElementById("dl-disable-btn").addEventListener("click", disableDownloading);

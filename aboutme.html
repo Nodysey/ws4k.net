@@ -6,6 +6,7 @@
     <title>the hainesverse</title>
     <link rel="stylesheet" href="css/root.css">
     <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/coverflow.css">
     <link rel="icon" href="img/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -78,12 +79,12 @@
             <div class="top">
                 <img src="img/banner.png">
             </div>
-            <header>
-                <a href="/" class="active">home</a>
+            <header class="section">
+                <a href="/">home</a>
                 <a href="/blog">blog</a>
                 <a href="/projects">projects</a>
                 <a href="/gallery">gallery</a>
-                <a href="/aboutme">who i am</a>
+                <a href="/aboutme" class="active">who i am</a>
             </header>
             <div class="section">
                 <h2>about me</h2>
@@ -119,6 +120,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="section">
+                <h1>albums i like</h1>
+                <div class="main">
+                    <div class="wrapper">
+                        <div class="row-items">
+
+                        </div>
+                        <div class="item-info">
+                            <h1>Title</h1>
+                            <h2>Artist</h2>
+                        </div>
+                    </div>
+                </div>
+                click on an album to open it on bandcamp!
+                <br>
+                i swear my music taste is more refined than this
             </div>
         </div>
         <div id="aside-right" class="aside">
@@ -167,6 +185,7 @@
             </div>
         </div>
     </div>
+    <script src="js/coverflow.js"></script>
     <script src="oneko/oneko.js"></script>
     <script src="js/index.js"></script>
     <script src="js/musicplayer.js"></script>

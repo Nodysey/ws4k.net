@@ -1,9 +1,9 @@
 .material-symbols-outlined {
     font-variation-settings:
-    'FILL' 0,
-    'wght' 500,
-    'GRAD' 200,
-    'opsz' 48
+            'FILL' 0,
+            'wght' 500,
+            'GRAD' 200,
+            'opsz' 48
 }
 body {
     margin: 0;
@@ -93,6 +93,27 @@ body {
     justify-content: center;
     align-items: center;
 }
+#dl-disable-btn {
+    position: fixed;
+    left: 72px;
+    bottom: 43px;
+    z-index: 332;
+
+    border: 0;
+    margin: 8px;
+    border-radius: 64px;
+    width: 48px;
+    height: 48px;
+
+    background-color: #488299;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#dl-disable-btn span {
+    font-size: 34px !important;
+}
 #add-shape {
     display: none;
     position: fixed;
@@ -123,6 +144,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    position: relative;
 }
 #add-shape .buttons button {
     border: 0;
@@ -153,6 +175,11 @@ body {
 }
 #add-shape .buttons button span, #addbtn span {
     font-size: 48px !important;
+}
+#add-shape-close {
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 #add-shape .content {
     display: flex;
@@ -277,6 +304,24 @@ body {
     justify-content: center;
     align-items: center;
 }
+#download-shape-download[disabled] {
+    opacity: .5;
+}
+.popup-alert {
+    background-color: #283236;
+    padding: 16px;
+    border-radius: 16px;
+    position: absolute;
+    top: 80%;
+    transform: translate(-50%, 24px);
+    left: 50%;
+    width: 400px;
+    box-sizing: border-box;
+}
+.popup-alert p {
+    color: white;
+    margin: 0;
+}
 #download-shape-close {
     justify-content: center;
     align-items: center;
@@ -342,4 +387,12 @@ body {
 #download-shape-photo {
     width: auto;
     height: 100%;
+}
+#add-shape-camera-select {
+    width: fit-content;
+    box-sizing: border-box;
+    cursor: default;
+    position: absolute;
+    bottom: 96px;
+    left: 8px;
 }
