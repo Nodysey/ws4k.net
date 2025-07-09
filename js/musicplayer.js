@@ -3,13 +3,13 @@ const songs = [
         "name": "முன்னுதாரணம்",
         "artist": "Tanger (feat. Treb & tiyu)",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 17 that one song (with Treb & tiyu).flac"
+        "src": "/songs/Tanger - Prefer not to say - 17 that one song (with Treb & tiyu).ogg"
     },
     {
         "name": "somewhere, someday,",
         "artist": "Tanger (feat. lorem ipsum)",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 24 somewhere, someday,.flac"
+        "src": "/songs/Tanger - Prefer not to say - 24 somewhere, someday,.ogg"
     },
     {
         "name": "do dodo do do do",
@@ -21,7 +21,7 @@ const songs = [
         "name": "IMPULSE!",
         "artist": "Tanger (feat. Inferno)",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 03 IMPULSE! (with Inferno).flac"
+        "src": "/songs/Tanger - Prefer not to say - 03 IMPULSE! (with Inferno).ogg"
     },
     {
         "name": "ケーキトップ",
@@ -39,13 +39,13 @@ const songs = [
         "name": "I LIKE LOUD THINGS",
         "artist": "Tanger",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 05 I LIKE LOUD THINGS.flac"
+        "src": "/songs/Tanger - Prefer not to say - 05 I LIKE LOUD THINGS.ogg"
     },
     {
         "name": "wan!",
         "artist": "Tanger (feat. Glitch Cat)",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 06 wan! (with Glitch Cat).flac"
+        "src": "/songs/Tanger - Prefer not to say - 06 wan! (with Glitch Cat).ogg"
     },
     {
         "name": "LCDLSD",
@@ -57,7 +57,7 @@ const songs = [
         "name": "sludgecrank",
         "artist": "Tanger",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 07 sludgecrank.flac"
+        "src": "/songs/Tanger - Prefer not to say - 07 sludgecrank.ogg"
     },
     {
         "name": "LOCKED UP FOR EVERY GOOD REASON!",
@@ -69,7 +69,7 @@ const songs = [
         "name": "head empty (interlude)",
         "artist": "Tanger",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 09 head empty (interlude).flac"
+        "src": "/songs/Tanger - Prefer not to say - 09 head empty (interlude).ogg"
     },
     {
         "name": "GIRL HELL 1999",
@@ -81,7 +81,7 @@ const songs = [
         "name": "BAD NUMBER!",
         "artist": "Tanger (feat. disphing)",
         "album": "Prefer not to say",
-        "src": "/songs/Tanger - Prefer not to say - 13 BAD NUMBER! (with disphing).flac"
+        "src": "/songs/Tanger - Prefer not to say - 13 BAD NUMBER! (with disphing).ogg"
     },
 ]
 
