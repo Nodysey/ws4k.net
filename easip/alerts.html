@@ -36,6 +36,15 @@
         <table id="results">
         </table>
         <script>
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'r' || e.key === 'R') {
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        document.getElementById('form-submit').click();
+                    }
+                }
+            });
+
             let params = new URLSearchParams(document.location.search);
             var fipsUrl = params.get('fips');
             document.getElementById('fips').value = fipsUrl
@@ -74,12 +83,12 @@
                 <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
-                <td><a href="${item.info[0].resource[0].uri}">Video Link</a></td>
+                <td><a href="./player?v=${item.info[0].resource[0].uri}">Play Video</a></td>
             </tr>
             `;
                     }
                 })
-                .catch(resultBox.innerHTML = '<tr><td>No Active Alerts!</td></tr>');
+                .catch(resultBox.innerHTML = '<tr><td>Waiting for alerts...</td></tr>');
             }
         </script>
     </body>

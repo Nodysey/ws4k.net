@@ -14,21 +14,18 @@
             }
             table {
                 border-spacing: 0;
-                width: 100%;
-                display: flex;
-            }
-            tbody {
-                width: 100%;
+                /*width: 100%;*/
+                display: table;
             }
             table, th, td {
                 border-collapse: collapse;
                 font-weight: normal;
                 font-size: 10pt;
             }
-            th {
+            th,.tf {
                 background-color: #f0f0f0;
             }
-            th,td {
+            th,td,.tf {
                 padding: 2px 4px;
             }
             td {
@@ -66,6 +63,9 @@
                 width: 100%;
                 height: calc(100vh - 33px);
             }
+            #embed {
+                display: none;
+            }
             body {
                 margin: 0;
             }
@@ -73,6 +73,35 @@
                 margin: 8px;
                 margin-bottom: 0;
                 width: calc(100vw - 16px);
+            }
+            .tool {
+                display: none;
+                margin: 8px;
+            }
+
+            .tool hr {
+                border: none;
+                border-bottom: 1px solid transparent;
+            }
+            .tool table {
+                border-spacing: 0;
+                display: table;
+                table-layout: auto;
+            }
+            .tool tr {
+                display: table-row;
+            }
+            .tool table, .tool th, .tool td {
+                border: 1px solid gray;
+                border-collapse: collapse;
+                font-weight: normal;
+                font-size: 10pt;
+            }
+            .tool th, .tool .tf {
+                background-color: #f0f0f0;
+            }
+            .tool th, .tool td, .tool .tf {
+                padding: 2px 4px;
             }
         </style>
     </head>
@@ -90,7 +119,178 @@
                 <td class="te"></td>
             </tr>
         </table>
+        <div class="tool" id="zip2fips">
+            <label>ZIP Code</label>
+            <input type="text" maxlength="5" id="zip2fips-zip">
+            <button id="zip2fips-form-submit">Submit</button>
+            <hr>
+            <table id="zip2fips-results">
+            </table>
+        </div>
+        <div class="tool" id="alerts">
+            <label>FIPS Code</label>
+            <input type="text" maxlength="6" id="alerts-fips">
+            <button id="alerts-form-submit">Submit</button>
+            <hr>
+            <table id="alerts-results">
+            </table>
+        </div>
+        <div class="tool" id="allalerts">
+            <button id="allalerts-form-submit">Refresh</button>
+            <hr>
+            <table id="allalerts-results">
+            </table>
+        </div>
+        <div class="tool" id="about"></div>
         <iframe id="embed"></iframe>
+
+        <script>
+            document.getElementById('zip2fips-form-submit').onclick = function(){
+                var textBox = document.getElementById('zip2fips-zip')
+                var resultBox = document.getElementById('zip2fips-results')
+                fetch(`https://easip-client.ccp.xcal.tv/eas/api/fips/zip/${textBox.value}?format=json`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        resultBox.innerHTML = `
+            <tr>
+                <th>City</th>
+                <th>ZIP Code</th>
+                <th>FIPS Code</th>
+                <th>State</th>
+            </tr>
+            `
+                        for (const item of data.zips) {
+                            resultBox.innerHTML += `
+            <tr>
+                <td>${item.id.slice(6,item.id.length)}</td>
+                <td>${item.zipCode}</td>
+                <td onclick="searchFIPS(item.countyFips)">${item.countyFips}</td>
+                <td>${item.state}</td>
+            </tr>
+            `;
+                        }
+                    })
+                    .catch(resultBox.innerHTML = '<tr><td>Not a valid ZIP Code</td></tr>');
+            }
+        </script>
+        <script>
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'r' || e.key === 'R') {
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        document.getElementById('alerts-form-submit').click();
+                    }
+                }
+            });
+
+            let params = new URLSearchParams(document.location.search);
+            var fipsUrl = params.get('fips');
+            document.getElementById('alerts-fips').value = fipsUrl
+            document.getElementById('alerts-form-submit').click()
+            document.getElementById('alerts-form-submit').onclick = function(){
+                var textBox = document.getElementById('alerts-fips')
+                var resultBox = document.getElementById('alerts-results')
+                fetch(`https://easip-client.ccp.xcal.tv/eas/api/alert/active/fipscode/${textBox.value}?format=json`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        resultBox.innerHTML = `
+            <tr>
+                <th>Event</th>
+                <th>Header</th>
+                <th>Description</th>
+                <th>Instructions</th>
+                <th>Urgency</th>
+                <th>Severity</th>
+                <th>Certainty</th>
+                <th>Issued</th>
+                <th>Effective</th>
+                <th>Expires</th>
+                <th>Video</th>
+            </tr>
+            `
+                        for (const item of data.alerts) {
+                            resultBox.innerHTML += `
+            <tr>
+                <td>${item.info[0].event}</td>
+                <td>${item.identifier + item.info[0].senderName}</td>
+                <td>${item.info[0].description}</td>
+                <td>${item.info[0].instruction}</td>
+                <td>${item.info[0].urgency}</td>
+                <td>${item.info[0].severity}</td>
+                <td>${item.info[0].certainty}</td>
+                <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
+                <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
+                <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
+                <td><a href="./player?v=${item.info[0].resource[0].uri}">Play Video</a></td>
+            </tr>
+            `;
+                        }
+                    })
+                    .catch(resultBox.innerHTML = '<tr><td>Waiting for alerts...</td></tr>');
+            }
+        </script>
+        <script>
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'r' || e.key === 'R') {
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        document.getElementById('allalerts-form-submit').click();
+                    }
+                }
+            });
+
+            document.getElementById('allalerts-form-submit').onclick = function(){
+                var resultBox = document.getElementById('allalerts-results')
+                fetch(`https://easip-client.ccp.xcal.tv/eas/api/alert/active?format=json`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        let hiddenAlerts = 0;
+                        resultBox.innerHTML = `
+            <tr>
+                <th>Event</th>
+                <th>Header</th>
+                <th>Description</th>
+                <th>Instructions</th>
+                <th>Urgency</th>
+                <th>Severity</th>
+                <th>Certainty</th>
+                <th>Issued</th>
+                <th>Effective</th>
+                <th>Expires</th>
+                <th>Video</th>
+            </tr>
+            `
+                        for (const item of data.alerts) {
+                            if (item.identifier.startsWith('ZCZC-EAS-RWT-SyntheticTestAlert-comcast-eas')) {
+                                // Synthetic Test Alert, hide
+                                hiddenAlerts++;
+                            } else {
+                                resultBox.innerHTML += `
+            <tr>
+                <td>${item.info[0].event}</td>
+                <td>${item.identifier + item.info[0].senderName}</td>
+                <td>${item.info[0].description}</td>
+                <td>${item.info[0].instruction}</td>
+                <td>${item.info[0].urgency}</td>
+                <td>${item.info[0].severity}</td>
+                <td>${item.info[0].certainty}</td>
+                <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.sent).getSeconds()).padStart(2,'0')}</td>
+                <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
+                <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
+                <td><a target="_blank" href="./player?v=${item.info[0].resource[0].uri}">Play Video</a></td>
+            </tr>
+            `;}
+                        }
+                        if (hiddenAlerts > 1) {
+                            resultBox.innerHTML += `<tr><th class="tf">${hiddenAlerts} other alerts were hidden.</th></tr>`;
+                        } else if (hiddenAlerts > 0) {
+                            resultBox.innerHTML += `<tr><th class="tf">${hiddenAlerts} other alert was hidden.</th></tr>`;
+                        }
+                    })
+                    .catch(resultBox.innerHTML = '<tr><td>Waiting for alerts...</td></tr>')
+            }
+            document.getElementById('allalerts-form-submit').click()
+        </script>
         <script>
             let frame = document.getElementById('embed');
             let tab1 = document.getElementById('tab-1');
@@ -98,25 +298,26 @@
             let tab3 = document.getElementById('tab-3');
             let tab4 = document.getElementById('tab-4');
             frame.src = 'zip2fips.html';
-            function searchFIPS(fips) {
-                frame.src = 'alerts.html?fips=' + fips;
-                tab1.classList.remove('ta')
-                tab2.classList.add('ta')
-                tab3.classList.remove('ta')
-                tab4.classList.remove('ta')
-            }
+            document.getElementById("zip2fips").style.display = 'block';
             tab1.onclick = function(){
                 frame.src = 'zip2fips.html';
                 tab1.classList.add('ta')
                 tab2.classList.remove('ta')
                 tab3.classList.remove('ta')
                 tab4.classList.remove('ta')
+                document.getElementById("zip2fips").style.display = 'block';
+                document.getElementById("alerts").style.display = 'none';
+                document.getElementById("allalerts").style.display = 'none';
             }
             tab2.onclick = function(){
                 frame.src = 'alerts.html';
                 tab1.classList.remove('ta')
                 tab2.classList.add('ta')
                 tab3.classList.remove('ta')
+                tab4.classList.remove('ta')
+                document.getElementById("zip2fips").style.display = 'none';
+                document.getElementById("alerts").style.display = 'block';
+                document.getElementById("allalerts").style.display = 'none';
             }
             tab3.onclick = function(){
                 frame.src = 'allalerts.html';
@@ -124,6 +325,9 @@
                 tab2.classList.remove('ta')
                 tab3.classList.add('ta')
                 tab4.classList.remove('ta')
+                document.getElementById("zip2fips").style.display = 'none';
+                document.getElementById("alerts").style.display = 'none';
+                document.getElementById("allalerts").style.display = 'block';
             }
             tab4.onclick = function(){
                 frame.src = 'about.html';

@@ -20,10 +20,10 @@
                 font-weight: normal;
                 font-size: 10pt;
             }
-            th {
+            th,.tf {
                 background-color: #f0f0f0;
             }
-            th,td {
+            th,td,.tf {
                 padding: 2px 4px;
             }
         </style>
@@ -34,11 +34,21 @@
         <table id="results">
         </table>
         <script>
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'r' || e.key === 'R') {
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        document.getElementById('form-submit').click();
+                    }
+                }
+            });
+
             document.getElementById('form-submit').onclick = function(){
                 var resultBox = document.getElementById('results')
                 fetch(`https://easip-client.ccp.xcal.tv/eas/api/alert/active?format=json`)
                 .then((response) => response.json())
                 .then((data) => {
+                    let hiddenAlerts = 0;
                     resultBox.innerHTML = `
             <tr>
                 <th>Event</th>
@@ -55,6 +65,10 @@
             </tr>
             `
                     for (const item of data.alerts) {
+                        if (item.identifier.startsWith('ZCZC-EAS-RWT-SyntheticTestAlert-comcast-eas')) {
+                            // Synthetic Test Alert, hide
+                            hiddenAlerts++;
+                        } else {
                         resultBox.innerHTML += `
             <tr>
                 <td>${item.info[0].event}</td>
@@ -67,12 +81,17 @@
                 <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.sent).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
-                <td><a href="${item.info[0].resource[0].uri}">Video Link</a></td>
+                <td><a target="_blank" href="./player?v=${item.info[0].resource[0].uri}">Play Video</a></td>
             </tr>
-            `;
+            `;}
+                    }
+                    if (hiddenAlerts > 1) {
+                        resultBox.innerHTML += `<tr class="tf">${hiddenAlerts} other alerts were hidden.</tr>`;
+                    } else if (hiddenAlerts > 0) {
+                        resultBox.innerHTML += `<tr class="tf">${hiddenAlerts} other alert was hidden.</tr>`;
                     }
                 })
-                .catch(resultBox.innerHTML = '<tr><td>No Active Alerts!</td></tr>');
+                .catch(resultBox.innerHTML = '<tr><td>Waiting for alerts...</td></tr>')
             }
             document.getElementById('form-submit').click()
         </script>
