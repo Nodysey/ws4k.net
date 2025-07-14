@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Comcast EASip Client</title>
         <style>
+
+            @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
             * {
-                font-family: -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+                font-family: "Inconsolata", -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
                 font-size: 10pt;
+                box-sizing: border-box;
+                color: white;
+            }
+            body {
+                margin: 0;
+                background-color: #1b1b1b;
+                height: 100%;
+                min-height: 100vh;
+            }
+            .easip-content {
+                width: 100%;
+                height: calc(100vh - 24px);
+                display: flex;
+                background-color: #2a2a2a;
+            }
+            button {
+                border: none;
+                background-color: var(--global-accent);
+                cursor: pointer;
+            }
+            input[type="text"] {
+                border: none;
+                background-color: #1b1b1b;
             }
             hr {
                 border: none;
@@ -29,11 +54,11 @@
                 padding: 2px 4px;
             }
             td {
-                border: 1px solid gray;
+                /*border: 1px solid gray;*/
                 cursor: default;
             }
             .tc {
-                border-right: 1px solid gray;
+                /*border-right: 1px solid gray;*/
             }
             .ts {
                 border-top: 0;
@@ -53,10 +78,11 @@
                 border-right: 0;
                 width: auto;
                 flex: 1;
-                height: 17px;
+                height: 20px;
             }
             .ta {
                 border-bottom: 1px solid transparent;
+                background-color: var(--global-accent);
             }
             iframe {
                 border: none;
@@ -70,9 +96,15 @@
                 margin: 0;
             }
             #tabs {
-                margin: 8px;
+                margin: 0 8px;
                 margin-bottom: 0;
                 width: calc(100vw - 16px);
+                height: 24px;
+                padding-top: 4px;
+            }
+            #tabs tr {
+                position: relative;
+                top: 4px;
             }
             .tool {
                 display: none;
@@ -92,18 +124,20 @@
                 display: table-row;
             }
             .tool table, .tool th, .tool td {
-                border: 1px solid gray;
+                border: 1px solid #494949;
                 border-collapse: collapse;
                 font-weight: normal;
-                font-size: 10pt;
+                font-size: 11pt;
             }
             .tool th, .tool .tf {
-                background-color: #f0f0f0;
+                background-color: #202020;
             }
             .tool th, .tool td, .tool .tf {
                 padding: 2px 4px;
             }
         </style>
+        <link rel="stylesheet" href="window.css">
+        <link rel="stylesheet" href="globalaccent.css">
     </head>
     <body>
         <table id="tabs">
@@ -119,31 +153,58 @@
                 <td class="te"></td>
             </tr>
         </table>
-        <div class="tool" id="zip2fips">
-            <label>ZIP Code</label>
-            <input type="text" maxlength="5" id="zip2fips-zip">
-            <button id="zip2fips-form-submit">Submit</button>
-            <hr>
-            <table id="zip2fips-results">
-            </table>
+        <div class="easip-content">
+            <div class="tool" id="zip2fips">
+                <label>ZIP Code</label>
+                <input type="text" maxlength="5" id="zip2fips-zip">
+                <button id="zip2fips-form-submit">Submit</button>
+                <hr>
+                <table id="zip2fips-results">
+                </table>
+            </div>
+            <div class="tool" id="alerts">
+                <label>FIPS Code</label>
+                <input type="text" maxlength="6" id="alerts-fips">
+                <button id="alerts-form-submit">Submit</button>
+                <hr>
+                <table id="alerts-results">
+                </table>
+            </div>
+            <div class="tool" id="allalerts">
+                <button id="allalerts-form-submit">Refresh</button>
+                <hr>
+                <table id="allalerts-results">
+                </table>
+            </div>
+            <div class="tool" id="about"></div>
         </div>
-        <div class="tool" id="alerts">
-            <label>FIPS Code</label>
-            <input type="text" maxlength="6" id="alerts-fips">
-            <button id="alerts-form-submit">Submit</button>
-            <hr>
-            <table id="alerts-results">
-            </table>
-        </div>
-        <div class="tool" id="allalerts">
-            <button id="allalerts-form-submit">Refresh</button>
-            <hr>
-            <table id="allalerts-results">
-            </table>
-        </div>
-        <div class="tool" id="about"></div>
         <iframe id="embed"></iframe>
 
+        <template id="window-template"><div class="window">
+            <div class="titlebar">
+                <div class="left-anchor">
+                    <!--<button class="shade">
+                        <img alt="Shade" class="icon" src="icons/shade-off.svg"/>
+                    </button>-->
+                    <h1 class="title">Window</h1>
+                </div>
+                <div class="right-anchor">
+                    <button class="newtab">
+                        <img alt="Open in New Tab" class="icon" src="icons/newtab.svg"/>
+                    </button>
+                    <button class="close">
+                        <img alt="Close" class="icon" src="icons/close.svg"/>
+                    </button>
+                </div>
+            </div>
+            <button class="resize-handle">
+
+            </button>
+            <div class="content">
+                <iframe class="content-frame" allowfullscreen></iframe>
+            </div>
+        </div></template>
+        <script src="window.js"></script>
         <script>
             document.getElementById('zip2fips-form-submit').onclick = function(){
                 var textBox = document.getElementById('zip2fips-zip')
@@ -179,6 +240,25 @@
                     if (e.ctrlKey || e.metaKey) {
                         e.preventDefault();
                         document.getElementById('alerts-form-submit').click();
+                    }
+                } else if (e.key === "Enter") {
+                    switch (tab) {
+                        case 0: {
+                            if (document.activeElement === document.querySelector("#zip2fips-zip")) {
+                                document.querySelector('#zip2fips-form-submit').click();
+                            }
+                            break;
+                        }
+                        case 1: {
+                            if (document.activeElement === document.querySelector("#alerts-fips")) {
+                                document.querySelector('#alerts-form-submit').click();
+                            }
+                            break;
+                        }
+                        case 2: {
+                            document.querySelector('#allalerts-form-submit').click();
+                            break;
+                        }
                     }
                 }
             });
@@ -221,7 +301,7 @@
                 <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
-                <td><a href="./player?v=${item.info[0].resource[0].uri}">Play Video</a></td>
+                <td><button onclick="createWindow( '${item.info[0].event}', './player?v=${item.info[0].resource[0].uri}', {x: 120, y: 120, w: 854, h: 480} )"><span>Play Video</span></button></td>
             </tr>
             `;
                         }
@@ -277,7 +357,7 @@
                 <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.sent).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
-                <td><a target="_blank" href="./player?v=${item.info[0].resource[0].uri}">Play Video</a></td>
+                <td><button onclick="createWindow( '${item.info[0].event}', './player?v=${item.info[0].resource[0].uri}', {x: 120, y: 120, w: 854, h: 480} )"><span>Play Video</span></button></td>
             </tr>
             `;}
                         }
@@ -292,6 +372,7 @@
             document.getElementById('allalerts-form-submit').click()
         </script>
         <script>
+            let tab = 0;
             let frame = document.getElementById('embed');
             let tab1 = document.getElementById('tab-1');
             let tab2 = document.getElementById('tab-2');
@@ -300,6 +381,7 @@
             frame.src = 'zip2fips.html';
             document.getElementById("zip2fips").style.display = 'block';
             tab1.onclick = function(){
+                tab = 0;
                 frame.src = 'zip2fips.html';
                 tab1.classList.add('ta')
                 tab2.classList.remove('ta')
@@ -310,6 +392,7 @@
                 document.getElementById("allalerts").style.display = 'none';
             }
             tab2.onclick = function(){
+                tab = 1;
                 frame.src = 'alerts.html';
                 tab1.classList.remove('ta')
                 tab2.classList.add('ta')
@@ -320,6 +403,7 @@
                 document.getElementById("allalerts").style.display = 'none';
             }
             tab3.onclick = function(){
+                tab = 2;
                 frame.src = 'allalerts.html';
                 tab1.classList.remove('ta')
                 tab2.classList.remove('ta')
@@ -330,6 +414,7 @@
                 document.getElementById("allalerts").style.display = 'block';
             }
             tab4.onclick = function(){
+                tab = 3;
                 frame.src = 'about.html';
                 tab1.classList.remove('ta')
                 tab2.classList.remove('ta')
