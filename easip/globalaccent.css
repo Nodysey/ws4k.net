@@ -1,4 +1,89 @@
 * {
-    --global-accent: #3bb63d;
-    --global-accent-2: #ad62ee;
+    --octavus: #4ebf9a;
+    --septima: #ad62ee;
+    --sextus: #ee7762;
+    --radish: #c53e61;
+    --barbie: #d166c3;
+    --navy: #2d5b80;
+    --cyanish: #3caab1;
+    --7up: #3bb63d;
+    --desert: #d1a166;
+    --dull: #545454;
+    --off-white: #b4b4b4;
+}
+
+body.accent-0 {
+    --global-accent: var(--octavus);
+}
+
+body.accent-1 {
+    --global-accent: var(--septima);
+}
+
+body.accent-2 {
+    --global-accent: var(--sextus);
+}
+
+body.accent-3 {
+    --global-accent: var(--radish);
+}
+
+body.accent-4 {
+    --global-accent: var(--barbie);
+}
+
+body.accent-5 {
+    --global-accent: var(--navy);
+}
+
+body.accent-6 {
+    --global-accent: var(--cyanish);
+}
+
+body.accent-7 {
+    --global-accent: var(--7up);
+}
+
+body.accent-8 {
+    --global-accent: var(--desert);
+}
+
+body.accent-9 {
+    --global-accent: var(--dull);
+}
+
+body.accent-10 {
+    --global-accent: var(--off-white);
+}
+
+.custom-select {
+    position: relative;
+}
+
+.custom-select select {
+    display: none;
+}
+.select-items div,.select-selected {
+    color: #ffffff;
+    padding: 2px 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+.select-items div:not(:last-of-type) {
+    border-color: transparent transparent #3b3b3b transparent;
+}
+.select-items {
+    position: absolute;
+    background-color: #101010;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: #2a2a2a;
 }

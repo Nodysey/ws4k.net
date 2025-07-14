@@ -2,24 +2,32 @@
 <html lang="en">
     <head>
         <title>Comcast EASip Client</title>
-        <style>
+        <!-- for video.js -->
+        <script src="player.js"></script>
+        <script src="player/video.min.js"></script>
+        <script src="https://kit.fontawesome.com/913ab3dc19.js" crossorigin="anonymous"></script>
+        <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-ima/2.2.0/videojs.ima.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/videojs-ima/2.2.0/videojs.ima.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/6.6.5/videojs.ads.min.js"></script>
 
+        <style>
             @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
             * {
                 font-family: "Inconsolata", -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
-                font-size: 10pt;
                 box-sizing: border-box;
                 color: white;
             }
             body {
+                font-size: 10pt;
                 margin: 0;
-                background-color: #1b1b1b;
+                background-color: #2a2a2a;
                 height: 100%;
                 min-height: 100vh;
             }
             .easip-content {
                 width: 100%;
-                height: calc(100vh - 24px);
+                height: 100%;
                 display: flex;
                 background-color: #2a2a2a;
             }
@@ -69,6 +77,9 @@
                 width: fit-content;
                 cursor: pointer;
             }
+            #tab-5 {
+                padding: 0
+            }
             tr {
                 display: flex;
             }
@@ -96,15 +107,17 @@
                 margin: 0;
             }
             #tabs {
-                margin: 0 8px;
-                margin-bottom: 0;
-                width: calc(100vw - 16px);
+                margin: 0 0;
+                width: 100vw;
                 height: 24px;
                 padding-top: 4px;
+                background-color: #1b1b1b;
             }
             #tabs tr {
-                position: relative;
+                position: absolute;
                 top: 4px;
+                left: 8px;
+                right: 8px;
             }
             .tool {
                 display: none;
@@ -128,6 +141,7 @@
                 border-collapse: collapse;
                 font-weight: normal;
                 font-size: 11pt;
+                margin-top: 7px;
             }
             .tool th, .tool .tf {
                 background-color: #202020;
@@ -138,8 +152,9 @@
         </style>
         <link rel="stylesheet" href="window.css">
         <link rel="stylesheet" href="globalaccent.css">
+        <link rel="stylesheet" href="player/video-js.css">
     </head>
-    <body>
+    <body class="accent-2">
         <table id="tabs">
             <tr>
                 <td class="ts"></td>
@@ -151,6 +166,23 @@
                 <td class="ts"></td>
                 <td id="tab-4" class="tb">Info</td>
                 <td class="te"></td>
+                <td id="tab-5" class="tb">
+                    <div class="custom-select">
+                        <select id="accent-select">
+                            <option value="0">Octavus</option>
+                            <option value="1">Septima</option>
+                            <option value="2">Sextus</option>
+                            <option value="3">Radish</option>
+                            <option value="4">Barbie</option>
+                            <option value="5">Navy</option>
+                            <option value="6">Cyanish</option>
+                            <option value="7">7-up</option>
+                            <option value="8">Desert</option>
+                            <option value="9">Dull</option>
+                            <option value="10">Off-White</option>
+                        </select>
+                    </div>
+                </td>
             </tr>
         </table>
         <div class="easip-content">
@@ -201,6 +233,7 @@
 
             </button>
             <div class="content">
+                <div class="video-frame"></div>
                 <iframe class="content-frame" allowfullscreen></iframe>
             </div>
         </div></template>
@@ -301,7 +334,7 @@
                 <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
-                <td><button onclick="createWindow( '${item.info[0].event}', './player?v=${item.info[0].resource[0].uri}', {x: 120, y: 120, w: 854, h: 480} )"><span>Play Video</span></button></td>
+                <td><button onclick="createWindow( '${item.info[0].event}', '${item.info[0].resource[0].uri}', {x: 120, y: 120, w: 854, h: 480}, true )"><span>Play Video</span></button></td>
             </tr>
             `;
                         }
@@ -357,7 +390,7 @@
                 <td>${new Date(item.sent).getFullYear()} / ${String(new Date(item.sent).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.sent).getDate()).padStart(2,'0')} ${String(new Date(item.sent).getHours()).padStart(2,'0')}:${String(new Date(item.sent).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.sent).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].effective).getFullYear()} / ${String(new Date(item.info[0].effective).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].effective).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].effective).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].effective).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].effective).getSeconds()).padStart(2,'0')}</td>
                 <td>${new Date(item.info[0].expires).getFullYear()} / ${String(new Date(item.info[0].expires).getMonth() + 1).padStart(2,'0')} / ${String(new Date(item.info[0].expires).getDate()).padStart(2,'0')} ${String(new Date(item.info[0].expires).getHours()).padStart(2,'0')}:${String(new Date(item.info[0].expires).getMinutes() + 1).padStart(2,'0')}:${String(new Date(item.info[0].expires).getSeconds()).padStart(2,'0')}</tzd>
-                <td><button onclick="createWindow( '${item.info[0].event}', './player?v=${item.info[0].resource[0].uri}', {x: 120, y: 120, w: 854, h: 480} )"><span>Play Video</span></button></td>
+                <td><button onclick="createWindow( '${item.info[0].event}', '${item.info[0].resource[0].uri}', {x: 120, y: 120, w: 854, h: 480}, true )"><span>Play Video</span></button></td>
             </tr>
             `;}
                         }
@@ -422,5 +455,7 @@
                 tab4.classList.add('ta')
             }
         </script>
+        <script src="customselect.js"></script>
+        <script src="accentcontrol.js"></script>
     </body>
 </html>

@@ -6,7 +6,7 @@
     h = height
 */
 
-function createWindow( title, href, uDim ) {
+function createWindow( title, href, uDim, isVideo ) {
     // setup
     const template = document.getElementById('window-template');
     const window = template.content.cloneNode(true).childNodes[0];
@@ -14,11 +14,32 @@ function createWindow( title, href, uDim ) {
 
     // apply configuration
     window.querySelector('.title').innerHTML = title;
-    window.querySelector('.content-frame').src = href;
     window.style.left = uDim.x + 'px';
     window.style.top = uDim.y + 'px';
     window.style.width = uDim.w + 'px';
     window.style.height = uDim.h + 'px';
+
+    // content rendering
+    if (isVideo === true) {
+        window.querySelector('.content-frame').style.display = 'none';
+        createVideo(href, window.querySelector('.video-frame'));
+        window.querySelector('.newtab').addEventListener("click", () => {
+            const a = document.createElement('a');
+            a.target = '_blank';
+            a.href = './player?v=' + href;
+            a.click();
+            a.remove();
+        });
+    } else {
+        window.querySelector('.content-frame').src = href;
+        window.querySelector('.newtab').addEventListener("click", () => {
+            const a = document.createElement('a');
+            a.target = '_blank';
+            a.href = href;
+            a.click();
+            a.remove();
+        });
+    }
 
     // window dragging
     let offsetX, offsetY;
@@ -71,13 +92,6 @@ function createWindow( title, href, uDim ) {
     // close button
     window.querySelector('.close').addEventListener("click", () => {
         window.remove();
-    });
-    window.querySelector('.newtab').addEventListener("click", () => {
-        const a = document.createElement('a');
-        a.target = '_blank';
-        a.href = href;
-        a.click();
-        a.remove();
     });
 
     // final step
