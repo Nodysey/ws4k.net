@@ -60,7 +60,8 @@ body.accent-10 {
     position: relative;
 }
 
-.custom-select select {
+.custom-select select,
+.custom-select legend {
     display: none;
 }
 .select-items div,.select-selected {
