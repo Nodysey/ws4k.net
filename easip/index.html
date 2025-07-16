@@ -115,14 +115,14 @@
                 margin: 0 0;
                 width: env(titlebar-area-width, 100vw);
                 height: env(titlebar-area-height, 24px);
-                padding-top: calc(env(titlebar-area-height, 24) - 20);
+                padding-top: 4px;
                 background-color: #1b1b1b;
                 position: relative;
                 left: env(titlebar-area-x, 0);
             }
             #tabs tr {
                 position: absolute;
-                top: 4px;
+                top: calc(env(titlebar-area-height, 24px) - 20px);
                 left: 8px;
                 right: 8px;
             }
