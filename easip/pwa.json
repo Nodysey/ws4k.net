@@ -1,0 +1,16 @@
+{
+  "name": "EASip",
+  "icons": [
+    {
+      "src": "/img/icon.svg",
+      "type": "image/svg",
+      "sizes": "48x48"
+    }
+  ],
+  "start_url": "https://ws4k.net/easip/",
+  "display_override": ["window-controls-overlay"],
+  "display": "standalone",
+  "prefer_related_applications": false,
+  "theme_color": "#1b1b1b",
+  "background_color": "#1b1b1b"
+}

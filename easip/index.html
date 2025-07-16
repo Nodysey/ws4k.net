@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="manifest" href="pwa.json"/>
     <head>
         <title>Comcast EASip Client</title>
+        <link rel="icon" href="img/icon.svg">
+        <link rel="apple-touch-icon" href="img/icon.svg">
         <!-- for video.js -->
         <script src="js/player.js"></script>
         <script src="player/video.min.js"></script>
@@ -108,10 +111,12 @@
             }
             #tabs {
                 margin: 0 0;
-                width: 100vw;
-                height: 24px;
+                width: env(titlebar-area-width, 100vw);
+                height: env(titlebar-area-height, 24px);
                 padding-top: 4px;
                 background-color: #1b1b1b;
+                position: relative;
+                left: env(titlebar-area-x, 0);
             }
             #tabs tr {
                 position: absolute;
