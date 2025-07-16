@@ -5,6 +5,11 @@
       "src": "/img/icon.svg",
       "type": "image/svg",
       "sizes": "48x48"
+    },
+    {
+      "src": "/img/icon.png",
+      "type": "image/png",
+      "sizes": "256x256"
     }
   ],
   "start_url": "https://ws4k.net/easip/",
