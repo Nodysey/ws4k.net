@@ -16,11 +16,11 @@ document.getElementById('allalerts-form-submit').onclick = async function(){
         .then((response) => response.json())
         .then((data) => {return data});
     renderAlerts(coxAlerts,document.getElementById('allalerts-results-cox'));*/
-    const rogersAlerts = await fetch(`http://easip-client-rogers.xcal.tv/eas/api/alert/active?format=json`)
+    const rogersAlerts = await fetch(`https://easip-client-rogers.xcal.tv/eas/api/alert/active?format=json`)
         .then((response) => response.json())
         .then((data) => {return data});
     renderAlerts(rogersAlerts,document.getElementById('allalerts-results-rogers'));
-    const shawAlerts = await fetch(`http://easip-client-shaw.xcal.tv/eas/api/alert/active?format=json`)
+    const shawAlerts = await fetch(`https://easip-client-shaw.xcal.tv/eas/api/alert/active?format=json`)
         .then((response) => response.json())
         .then((data) => {return data});
     renderAlerts(shawAlerts,document.getElementById('allalerts-results-shaw'));
